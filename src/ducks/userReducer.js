@@ -9,6 +9,16 @@ const initialState = {
   loading: false
 };
 
+export function login( username, password ) {
+  let data = axios
+  .post('/auth/login', { username, password })
+  .then(res => res.data)
+    return {
+      type: LOGIN,
+      payload: data
+    }
+}
+
 export function signup( username, email, password ) {
   let data = axios
   .post('/auth/register', { username, email, password })
@@ -18,22 +28,6 @@ export function signup( username, email, password ) {
       payload: data
     }
 }
-
-export function login( username, password ) {
-  let data = axios
-  .post('/auth/login', { username, password })
-  .then(res => res.data)
-  return {
-    type: LOGIN,
-    payload: data
-  }
-}
-
-// export const signup = async ( username, email, password ) => {
-//   let response = await axios
-//   .post('/auth/register', { username, email, password })
-//   console.log('response:', response);
-// }
 
 export default function(state = initialState, action) {
   let { type, payload } = action;

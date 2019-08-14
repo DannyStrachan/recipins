@@ -43,6 +43,7 @@ class Landing extends Component {
     handleChange= e => {
         let { name, value } = e.target
         this.setState({ [name]: value })
+        console.log('username:', this.state.username, 'password:', this.state.password);
     }
 
     signupUser = (e) => {
@@ -63,8 +64,6 @@ class Landing extends Component {
 
   render() {
       let { username, password, email, confirmPassword } = this.state
-    console.log('props from reducer:', this.props);
-
     let { user } = this.props
     if (user.loggedIn) return <Redirect to="/dashboard" />
     return (
@@ -85,8 +84,8 @@ class Landing extends Component {
                     <div className="close" onClick={e => this.closeAuth(e)}>+</div>
                     <img alt="" src="https://media.istockphoto.com/vectors/healthy-nature-food-logo-design-template-vector-id1011267000" />
                     <div className="login-input">
-                        <input type="text" placeholder="Username" />
-                        <input type="password" placeholder="Password" />
+                    <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="Username" />
+                    <input type="password" value={password} name="password" onChange={this.handleChange} placeholder="Password" />
                     </div>
                     <div className="buttons">
                         <button className="register-btn" onClick={e => this.showRegister(e)} >Register</button>
@@ -124,4 +123,4 @@ function mapStateToProps(state) {
     return state
 }
 
-export default connect( mapStateToProps, { signup } )( Landing )
+export default connect( mapStateToProps, { signup, login } )( Landing )
