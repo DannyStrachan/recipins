@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+// import Auth from './Components/Auth/Auth'
+// import CreateBoard from './Components/CreateBoard/CreateBoard'
+// import Nav from './Components/Nav/Nav'
+import Header from './Components/Header/Header'
+import routes from './routes'
+import {withRouter} from 'react-router-dom'
 import './App.css';
 
-function App() {
+function App(props) {
+  console.log("props in app", props);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Auth />
+      <CreateBoard />
+      <Nav /> */}
+      {props.location.pathname === '/' ||
+      props.location.pathname === '/save' ||
+      props.location.pathname === '/share' ||
+      props.location.pathname === '/recipe-card' ?
+      null :
+      <Header />
+      }
+      {routes}
     </div>
   );
 }
 
-export default App;
+export default withRouter(App)
