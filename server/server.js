@@ -4,14 +4,14 @@ require("dotenv").config({
 const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
-// const authCtrl = require('./controllers/authController')
+const authCtrl = require('./controllers/authController')
 // const rcpeCtrl = require('./controllers/recipeController')
 // const userCtrl = require('./controllers/userController')
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
 const app = express()
 
-app.use(express.json)
+app.use(express.json())
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
@@ -21,7 +21,6 @@ app.use(session({
     }
 }))
 
-// ENDPOINTS
 
 
 massive(CONNECTION_STRING).then(db => {
@@ -31,3 +30,7 @@ massive(CONNECTION_STRING).then(db => {
         console.log(`Rumblin on PORT ${SERVER_PORT}!`)
     })
 })
+
+// ENDPOINTS
+app.post('/auth/register', authCtrl.register)
+app.post('/auth/login', authCtrl.login)

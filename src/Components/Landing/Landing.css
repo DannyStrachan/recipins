@@ -87,6 +87,8 @@ input {
   background: rgb(0, 0, 0);
   padding: 9px;
   border-radius: 6px;
+  color: rgb(228, 228, 228);
+  font-weight: bold;
 }
 
 .login-input{

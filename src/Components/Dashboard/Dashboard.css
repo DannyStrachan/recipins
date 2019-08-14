@@ -29,15 +29,7 @@
   border-radius: 9px;
 }
 
-.card-button {
-  display: none;
-}
-
-.img:hover + .card-button {
-  display: block;
-}
-
-.hover-div {
+/* .hover-div {
   width: 90%;
   height: 90px;
   position: absolute;
@@ -45,17 +37,31 @@
   background: rgba(0, 0, 0, 0.589);
   display: flex;
   justify-content: space-around;
-}
+} */
 
 .card-button {
   background: rgb(146, 42, 42);
   width: 66px;
   height: 36px;
   border-radius: 50%;
-  display: flex;
   justify-content: center;
   align-items: center;
   color: rgb(228, 228, 228);
   font-weight: bold;
   font-size: 18px;
+  display: flex;
+  display: none;
 }
+
+.hover-div:hover {
+  background: green;
+}
+
+/* .div{
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  background: white;
+} */

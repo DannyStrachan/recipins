@@ -3,22 +3,15 @@ import React, {Component} from 'react'
 
 export default class Dashboard extends Component{
 
-    displayButtons = () => {
-        document.querySelector('.card-button').style.display = 'flex'
-        // document.querySelector('.login').style.display = 'flex'
-        // document.querySelector('.register').style.display = 'none'
-    }
-
-    hideButtons = () => {
-        document.querySelector('.card-button').style.display = 'none'
-        // document.querySelector('.login').style.display = 'flex'
-        // document.querySelector('.register').style.display = 'none'
-    }
+    // showsHover = () => {if (document.querySelector('.card-button').style.display === 'none'){
+    //     document.querySelector('.card-button').style.display = 'block'
+    // } document.querySelector('.card-button').style.display = 'block'
+    // }onClick={this.showsHover}
 
     render(){
         return (
-            <div onMouseDown={this.hideButtons} className="Dashboard">
-                <img onMouseDown={this.displayButtons} className="img" alt="" src="https://downshiftology.com/wp-content/uploads/2015/11/shakshuka-12.jpg" />
+            <div className="Dashboard">
+                <img className="img" alt="" src="https://downshiftology.com/wp-content/uploads/2015/11/shakshuka-12.jpg" />
                 <img className="img" alt="" src="https://d2gtpjxvvd720b.cloudfront.net/system/recipe/image/5016/default_Hungry-Girl-Healthy-Air-Fryer-Philly-Cheesesteak-Egg-Rolls-recipe-Cut-20190703-1503-31216-2118.jpg" />
                 <img className="img" alt="" src="https://assets.bonappetit.com/photos/597f6564e85ce178131a6475/16:9/w_400%2Cc_limit/0817-murray-mancini-dried-tomato-pie.jpg" />
                 <img className="img" alt="" src="https://pinchofyum.com/wp-content/uploads/Mediterranean-Bowl-Recipe.jpg" />
@@ -28,9 +21,10 @@ export default class Dashboard extends Component{
                 <img className="img" alt="" src="https://s23209.pcdn.co/wp-content/uploads/2018/09/Creamy-Beef-and-ShellsIMG_6411.jpg" />
                 <div className="hover-div" >
                     <button className="card-button">Share</button>
+                    <button className="card-button">View</button>
                     <button className="card-button">Save</button>
                 </div>
-            </div>
+                </div>
         )
     }
 }
