@@ -4,5 +4,16 @@
   }
 
   .Header{
-      background: rgba(29, 29, 29, 0.486);
+      background: rgba(29, 29, 29, 0.781);
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0px 9px;
+      color: rgb(243, 243, 243);
   }
+
+.Header input{
+    width: 69%;
+    border: none;
+}

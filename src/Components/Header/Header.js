@@ -7,7 +7,9 @@ export default class Header extends Component{
         // if (this.props.location.pathname.indexOf('/share') > -1 ) return null
         return (
             <div className="Header">
-                <div className="icon">Header</div>
+                <div className="icon">Home</div>
+                <input type="text" className="search" placeholder="Search" />
+                <div className="nav" >NAV</div>
             </div>
         )
     }
