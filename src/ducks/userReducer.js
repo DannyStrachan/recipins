@@ -1,4 +1,3 @@
-// import axios from "axios";
 import { SIGNUP, LOGIN } from "./actionTypes";
 import axios from "axios";
 

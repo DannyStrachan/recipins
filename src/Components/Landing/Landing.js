@@ -2,7 +2,6 @@ import "./Landing.css";
 import React, { Component } from "react";
 import { connect } from 'react-redux'
 import { signup, login } from '../../ducks/userReducer'
-// import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
 class Landing extends Component {
@@ -15,9 +14,6 @@ class Landing extends Component {
             email: ''
         }
     }
-
-    // componentDidMount() {
-    // }
 
     showLogin = (e) => {
         e.preventDefault()
@@ -43,7 +39,6 @@ class Landing extends Component {
     handleChange= e => {
         let { name, value } = e.target
         this.setState({ [name]: value })
-        console.log('username:', this.state.username, 'password:', this.state.password);
     }
 
     signupUser = (e) => {

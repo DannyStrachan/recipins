@@ -11,9 +11,6 @@ function App(props) {
   console.log("props in app", props);
   return (
     <div className="App">
-      {/* <Auth />
-      <CreateBoard />
-      <Nav /> */}
       {props.location.pathname === '/' ||
       props.location.pathname === '/save' ||
       props.location.pathname === '/share' ||
