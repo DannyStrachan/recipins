@@ -20,9 +20,46 @@
     left: 9px;
 }
 
+.img {
+    height: 100%;
+    width: 100%;
+    border-radius: 9px;
+  }
+
 .card{
     position: relative;
     text-align: center;
     color: white;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    background: orange;
+    width: 48%;
+    height: 28%;
+    margin: 3px;
+}
+
+.hover-buttons{
+    position: absolute;
+    top: 9px;
+    width: 93%;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    /* padding-left: 9px;
+    padding-right: 9px; */
+}
+
+.share-save-view{
+    background: rgb(204, 8, 8);
+    color: whitesmoke;
+    padding: 3px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.712);
+    /* display: flex; */
+    visibility: visible;
+    /* display: none; */
 }

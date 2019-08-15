@@ -2,6 +2,7 @@ import './Header.css'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { getRecipins } from '../../ducks/recipinReducer'
+import {Link} from 'react-router-dom'
 
 
 class Header extends Component{
@@ -34,7 +35,7 @@ class Header extends Component{
         
         return (
             <div className="Header">
-                <div className="icon">Home</div>
+                <Link to="/dashboard" ><div className="icon">Home</div></Link>
                 <form style={formStyle} onSubmit={e => this.getPins(e)} >
                     <input type="text" name="recipeName" className="search" placeholder="Search" />
                     <button className="button-search" style={buttonStyle} >Search</button>

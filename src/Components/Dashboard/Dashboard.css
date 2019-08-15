@@ -14,13 +14,7 @@
   overflow-y: auto;
 }
 
-.img {
-  background: blue;
-  height: 160px;
-  width: 160px;
-  margin: 10px;
-  border-radius: 9px;
-}
+
 
 /* .hover-div {
   width: 90%;

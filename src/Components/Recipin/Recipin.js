@@ -1,5 +1,6 @@
 import './Recipin.css'
 import React, {Component} from 'react'
+import Pin from './Pin'
 // import store from '../../ducks/store'
 import {connect} from 'react-redux'
 
@@ -19,18 +20,12 @@ class Recipin extends Component{
         // })
     }
 
-    // Map through here
-
     render(){
         console.log('props', this.props);
         
             let cards = this.state.recipins.map((recipe, i) => {
                 return (
-                    <div key={recipe.recipe_id} className="card" >
-                        <img className="img" alt={recipe.publisher} src={recipe.image_url} />
-                        {/* Title: {recipe.title} */}
-                        <div className="card-title">{recipe.title}</div>
-                    </div>
+                    <Pin key={recipe.recipe_id} recipe={recipe}/>
                 )
             })
         
