@@ -5,7 +5,7 @@ import recipinReducer from './recipinReducer'
 
 const rootReducer = combineReducers({
     user: userReducer,
-    recipins: recipinReducer
+    recipinsReducer: recipinReducer
 })
 
 export default createStore(rootReducer, compose(applyMiddleware(promiseMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));

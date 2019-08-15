@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+.Recipin{
+    /* background: rgb(34, 34, 34); */
+    height: 96vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    position: fixed;
+    overflow-y: auto;
+}
+
+.card-title{
+    position: absolute;
+    bottom: 12px;
+    left: 9px;
+}
+
+.card{
+    position: relative;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
