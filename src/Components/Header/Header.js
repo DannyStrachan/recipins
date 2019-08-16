@@ -1,5 +1,6 @@
 import './Header.css'
 import React, {Component} from 'react'
+import Nav from '../Nav/Nav'
 import {connect} from 'react-redux'
 import { getRecipins } from '../../ducks/recipinReducer'
 import {Link} from 'react-router-dom'
@@ -40,7 +41,7 @@ class Header extends Component{
                     <input type="text" name="recipeName" className="search" placeholder="Search" />
                     <button className="button-search" style={buttonStyle} >Search</button>
                 </form>
-                    <div className="nav" >NAV</div>
+                    <Nav />
 
                 <div className="hidden-nav"></div>
             </div>

@@ -1,0 +1,67 @@
+.Nav-open{
+    background: rgba(0, 0, 0, 0.822);
+    height: 571px;
+    width: 33%;
+    position: absolute;
+    /* position: fixed; */
+    right: 0px;
+    top: 0px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 3px;
+    padding-bottom: 66px;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+}
+
+.nav-links{
+    height: 360px;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 93px;
+}
+
+.profile-link{
+    height: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    font-size: 30px;
+}
+
+.seller-link{
+    height: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    font-size: 30px;
+}
+
+.about-link{
+    height: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    font-size: 30px;
+}
+
+.logout-link{
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.hamburger-icon{
+    font-size: 30px;
+    font-weight: bold;
+    color: whitesmoke;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 9px;
+}

@@ -1,0 +1,169 @@
+.profile-info{
+    display: flex;
+    justify-content: space-between;
+    background: rgb(24, 24, 24);
+    height: 80%;
+}
+
+.profile-left{
+    background: royalblue;
+    justify-content: space-between;
+    width: 66%;
+}
+
+.profile-name{
+    background: rgb(24, 24, 24);
+    color: whitesmoke;
+    height: 50%;
+    display: flex;
+    padding-left: 18px;
+    align-items: center;
+}
+
+.profile-options{
+    background: rgb(24, 24, 24);
+    height: 50%;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-right img{
+    width: 99px;
+    height: 99px;
+    border-radius: 50%;
+    margin: 18px;
+}
+
+.top-half{
+  height: 30vh;
+  background: gold;
+}
+
+.board-dashboard, .pin-dashboard{
+    background: rgb(24, 24, 24);
+    color: whitesmoke;
+    height: 64vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 18px;
+    position: fixed;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.board, .pin{
+    background: rgb(224, 27, 27);
+    width: 48%;
+    height: 160px;
+    margin: 3px;
+    border-radius: 9px;
+}
+
+.filter-buttons{
+    padding-bottom: 6px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    background: rgb(24, 24, 24);
+}
+
+.toggle-button{
+    padding: 3px;
+    background: rgb(224, 27, 27);
+    border-radius: 34px;
+    height: 34px;
+    width: 66px;
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+}
+
+.toggle-switch{
+    display: flex;
+    align-items: center;
+    color: rgb(224, 27, 27);
+    font-weight: bold;
+
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(141, 17, 17);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+/* .add-recipe-link{
+    font-weight: bold;
+
+}
+
+.messages-link{
+    font-weight: bold;
+
+}
+
+.seller-profile-link{
+    font-weight: bold;
+
+} */

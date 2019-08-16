@@ -7,20 +7,19 @@ export default class Pin extends React.Component{
     }
     
     showButtons = () => {
+        // if (this.state.isClicked === true) {
+        //     this.setState({
+        //         isClicked: false
+        //     })
+        // }
         this.setState({
             isClicked: !this.state.isClicked
         })
-        if (this.state.isClicked === true) {
-            document.querySelector('.card').style.borderColor = "red"
-        } else {
-            document.querySelector('.card').style.height = "28%"
-        }
-    }
-
-    showPage = () => {
-        // this.props.location.push("/about")
-        console.log('showPage function:', this.props.recipe.f2f_url);
-        // return <Redirect to={this.props.recipe.f2f_url} />
+        // if (this.state.isClicked === true) {
+        //     document.querySelector('.card').style.borderColor = "red"
+        // } else {
+        //     document.querySelector('.card').style.height = "28%"
+        // }
     }
 
 

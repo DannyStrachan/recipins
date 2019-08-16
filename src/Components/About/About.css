@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .About {
+    background: rgb(34, 34, 34);
+    height: 94vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    position: fixed;
+    overflow-y: auto;
+    color: whitesmoke;
+  }
