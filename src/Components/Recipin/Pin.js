@@ -1,3 +1,4 @@
+import './Recipin.css'
 import React from 'react'
 
 export default class Pin extends React.Component{
@@ -9,6 +10,11 @@ export default class Pin extends React.Component{
         this.setState({
             isClicked: !this.state.isClicked
         })
+        if (this.state.isClicked === true) {
+            document.querySelector('.card').style.borderColor = "red"
+        } else {
+            document.querySelector('.card').style.height = "28%"
+        }
     }
 
     showPage = () => {
@@ -27,7 +33,7 @@ export default class Pin extends React.Component{
                         {this.state.isClicked ?
                         <div className="hover-buttons">
                             <button  className="share-save-view">Share</button>
-                            <a href={this.props.recipe.f2f_url} className="share-save-view" onClick={this.showPage}>View</a>
+                            <a id='view' href={this.props.recipe.source_url} className="share-save-view" onClick={this.showPage}>View</a>
                             <button className="share-save-view">Save</button>
                         </div> :
                         null}

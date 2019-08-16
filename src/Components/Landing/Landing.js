@@ -59,7 +59,8 @@ class Landing extends Component {
 
   render() {
       let { username, password, email, confirmPassword } = this.state
-    let { user } = this.props
+    let { user } = this.props.user
+    console.log('user in landing:', user);
     if (user.loggedIn) return <Redirect to="/dashboard" />
     return (
       <div className="Landing">

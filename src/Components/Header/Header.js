@@ -35,7 +35,7 @@ class Header extends Component{
         
         return (
             <div className="Header">
-                <Link to="/dashboard" ><div className="icon">Home</div></Link>
+                <Link to="/dashboard" className="icon">Home</Link>
                 <form style={formStyle} onSubmit={e => this.getPins(e)} >
                     <input type="text" name="recipeName" className="search" placeholder="Search" />
                     <button className="button-search" style={buttonStyle} >Search</button>
