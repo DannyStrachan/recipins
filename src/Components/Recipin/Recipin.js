@@ -9,8 +9,10 @@ class Recipin extends Component{
         super(props)
         // const reduxState = store.getState()
         // console.log('reduxState:', reduxState);
+
+    console.log('props.recipinsReducer.recipins in Recipin:', this.props.recipinsReducer.recipins)
         this.state = {
-            recipins: Object.keys(props.recipinsReducer.recipins).length > 0 ? props.recipinsReducer.recipins : props.recipins.recipins
+            recipins: Object.keys(this.props.recipinsReducer.recipins).length > 0 ? props.recipinsReducer.recipins : props.recipinsReducer.recipins
         }
     }
 
@@ -21,19 +23,24 @@ class Recipin extends Component{
     }
 
     render(){
-        console.log('props', this.props);
+        console.log('props in Recipin', this.props.recipinsReducer.recipins);
+        console.log('state recipins in Recipin:', this.state.recipins);
+        console.log('true or false', this.props.recipinsReducer.recipins === this.state.recipins);
         
-            let cards = this.state.recipins.map((recipe, i) => {
+            let cards = this.props.recipinsReducer.recipins.map((recipe, i) => {
+                console.log('mapping', recipe)
                 return (
+                    
                     <Pin key={recipe.recipe_id} recipe={recipe}/>
                 )
             })
         
         
         return (
-            this.state.recipins.length > 0 ?
-                <div className="Recipin" >{cards}</div> :
-                null
+            this.state.recipins > 0 ?
+                null :
+                <div className="Recipin" >{cards}</div> 
+            // console.log('cards', cards)
         )
     }
 }

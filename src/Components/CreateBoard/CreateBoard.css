@@ -1,0 +1,64 @@
+.CreateBoard{
+
+    border-top-right-radius: 18px;
+    border-top-left-radius: 18px;
+    height: 9%;
+    width: 100vw;
+    position: fixed;
+    top: 69vh;
+    left: 0px;
+    z-index: 5;
+}
+
+.active-create-board{
+    background-image: linear-gradient(rgba(203, 9, 9, 0.666), rgba(255, 255, 255, 0));
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* justify-content: space-around; */
+}
+
+.create-input{
+    width: 80%;
+    border: none;
+    margin-left: 9px;
+}
+
+.create-board-form{
+    display: flex;
+    width: 90%;
+    height: 100%;
+    align-content: flex-end;
+    margin-top: 39px;
+}
+
+.add-board{
+    box-shadow: 3px 9px 3px rgba(0, 0, 0, 0.589);
+    border-radius: 50%;
+    color: rgb(28, 162, 224);
+    /* background: black; */
+    height: 44px;
+    width: 44px;
+    margin: 6px;
+}
+
+.Boards{
+    width: 100%;
+    height: 61vh;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: fixed;
+    overflow-y: auto;
+}
+
+.board-title-card{
+    background: rgba(0, 0, 0, 0.247);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 18%;
+    box-shadow: 0px -9px 9px rgba(36, 36, 36, 0.342);
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+}

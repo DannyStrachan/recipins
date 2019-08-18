@@ -1,0 +1,59 @@
+
+
+.save-open{
+    height: 100vh;
+    width: 100vw;
+    background: rgba(203, 9, 9, 0.666);
+    color: whitesmoke;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    /* padding-top: 18px; */
+}
+
+.header-title{
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+.close-save{
+    position: absolute;
+    top: 3px;
+    left: 16px;
+    font-size: 33px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.save-header{
+    background: grey;
+    height: 9vh;
+    display: flex;
+    justify-content: space-around;
+    right: 0px;
+    
+    /* justify-content: space-between; */
+}
+
+.board-list{
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 20vh;
+    overflow-y: auto;
+}
+
+.create-board{
+    background: grey;
+    height: 9vh;
+    display: flex;
+    padding: 9px;
+}

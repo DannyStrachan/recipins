@@ -1,12 +1,17 @@
 import './Profile.css'
+import Boards from '../CreateBoard/Boards'
 import React, {Component} from 'react'
+import { AddCircle, Currency, Restaurant, Article } from 'grommet-icons';
+import { ChatOption } from 'grommet-icons';
+import CreateBoard from '../CreateBoard/CreateBoard'
 const link = `https://www.pyramidinternational.com/assets/img/products/WDC95580`
 
 export default class Profile extends Component{
 
     state = {
         pinsClicked: true,
-        buttonText: 'Pins'
+        buttonText: 'Pins',
+        addIsClicked: false
     }
 
     toggleDisplay = () => {
@@ -25,6 +30,12 @@ export default class Profile extends Component{
         })
     }
 
+    showCreateBoard = () => {
+        this.setState({
+            addIsClicked: !this.state.addIsClicked
+        })
+    }
+
     render(){
         return (
             <div className="Profile">
@@ -33,24 +44,27 @@ export default class Profile extends Component{
                     <div className="profile-left" >
                         <h1 className="profile-name" >Hello World</h1>
                         <div className="profile-options" >
-                            <div className="add-recipe-link" >+</div>
-                            <div className="messages-link" >message</div>
-                            <div className="seller-profile-link" >$</div>
+                            <div className="add-recipe-link" onClick={this.showCreateBoard} ><AddCircle color='rgb(203, 9, 9)' size='large' /></div>
+                            <div className="messages-link" ><ChatOption color='rgb(27, 180, 233)' size='large' /></div>
+                            <div className="seller-profile-link" ><Currency color='rgb(44, 420, 44)' size='large' /></div>
                         </div>
                     </div>
                     <div className="profile-right" >
                         <img alt="" src={link} />
                     </div>
+                    {!this.state.addIsClicked ? null :
+                    <CreateBoard props={this.props}/>
+                    }
                 </div>
 
                 <div className="filter-buttons" >
                     <button className="toggle-button" onClick={this.toggleDisplay} >{this.state.buttonText}</button>
-                    <div className="toggle-switch" >Recipin</div>
-                    <label class="switch">
+                    <div className="toggle-switch" ><Article /></div>
+                    <label className="switch">
                         <input type="checkbox" />
-                        <span class="slider round"></span>
+                        <span className="slider round"></span>
                     </label>
-                    <div className="toggle-switch" >Recipurchase</div>
+                    <div className="toggle-switch" ><Restaurant /></div>
                 </div>
                 </div>
                 
@@ -63,11 +77,9 @@ export default class Profile extends Component{
                     <div className="pin" >Pin5</div>
                 </div> :
                 <div className="board-dashboard" >
-                    <div className="board" >Board1</div>
-                    <div className="board" >Board2</div>
-                    <div className="board" >Board3</div>
-                    <div className="board" >Board4</div>
-                    <div className="board" >Board5</div>
+                    <div className="board-view" >
+                        <Boards id={this.props.id} />
+                    </div>
                 </div>}
                 
             </div>

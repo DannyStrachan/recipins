@@ -9,14 +9,10 @@ export default class Dashboard extends Component {
   // }onClick={this.showsHover}
 
   render() {
+    console.log('session:');
     return (
       <div className="Dashboard">
         <Recipin />
-        <div className="hover-div">
-          <button className="card-button">Share</button>
-          <button className="card-button">View</button>
-          <button className="card-button">Save</button>
-        </div>
       </div>
     );
   }

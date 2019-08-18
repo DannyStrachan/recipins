@@ -8,23 +8,11 @@
   height: 94vh;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
   position: fixed;
   overflow-y: auto;
 }
-
-
-
-/* .hover-div {
-  width: 90%;
-  height: 90px;
-  position: absolute;
-  top: 33px;
-  background: rgba(0, 0, 0, 0.589);
-  display: flex;
-  justify-content: space-around;
-} */
 
 .card-button {
   background: rgb(146, 42, 42);

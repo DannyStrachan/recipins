@@ -1,5 +1,7 @@
 import './Recipin.css'
 import React from 'react'
+import Save from '../Save/Save'
+import { ShareOption, View } from 'grommet-icons';
 
 export default class Pin extends React.Component{
     state = {
@@ -24,16 +26,23 @@ export default class Pin extends React.Component{
 
 
     render() {
+        console.log('Pin this.props', this.props.recipe);
         const { recipe } = this.props
+        console.log('after destructure', recipe);
         return (
-            <div className={"card"} onClick={e => this.showButtons(e)} >
-                        <img id={recipe.recipe_id} className="img" alt={recipe.publisher} src={recipe.image_url} />
-                        <div className="card-title">{recipe.title}</div>
+            <div className={"card"}  >
+                         <img id={recipe.recipe_id} className="img" alt={recipe.publisher} src={recipe.image_url} onClick={e => this.showButtons(e)} />
+                         <h5 className="card-title">
+                         {this.state.isClicked ? `${recipe.title}` : 
+                    
+                        recipe.title.length < 18 ? `${recipe.title}` : `${recipe.title.substring(0, 20)}...`
+                        }
+                        </h5>
                         {this.state.isClicked ?
                         <div className="hover-buttons">
-                            <button  className="share-save-view">Share</button>
-                            <a id='view' href={this.props.recipe.source_url} className="share-save-view" onClick={this.showPage}>View</a>
-                            <button className="share-save-view">Save</button>
+                            <button  className="share-save-view"><ShareOption color='rgb(203, 9, 9)' /></button>
+                            <a id='view' href={this.props.recipe.source_url} className="share-save-view" onClick={this.showPage}><View color='rgb(203, 9, 9)' /></a>
+                            < Save recipe={recipe} id={recipe.recipe_id}/>
                         </div> :
                         null}
                     </div>

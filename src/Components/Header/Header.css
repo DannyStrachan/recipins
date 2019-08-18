@@ -19,10 +19,5 @@
 }
 
 .icon{
-    text-decoration: none;
-    background: whitesmoke;
-    border-radius: 9px;
-    padding: 3px;
-    font-weight: bold;
-    color: rgb(212, 31, 31);
+    padding-top: 6px;
 }
