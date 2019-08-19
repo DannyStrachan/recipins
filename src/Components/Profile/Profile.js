@@ -1,5 +1,6 @@
 import './Profile.css'
 import Boards from '../CreateBoard/Boards'
+import UserRecipins from '../Recipin/UserRecipins'
 import React, {Component} from 'react'
 import { AddCircle, Currency, Restaurant, Article } from 'grommet-icons';
 import { ChatOption } from 'grommet-icons';
@@ -69,12 +70,10 @@ export default class Profile extends Component{
                 </div>
                 
                 {this.state.pinsClicked ?
-                    <div className="pin-dashboard" >
-                    <div className="pin" >Pin1</div>
-                    <div className="pin" >Pin2</div>
-                    <div className="pin" >Pin3</div>
-                    <div className="pin" >Pin4</div>
-                    <div className="pin" >Pin5</div>
+                <div className="pin-dashboard" >
+                    <div className="board-view" >
+                        <UserRecipins id={this.props.id} />
+                    </div>
                 </div> :
                 <div className="board-dashboard" >
                     <div className="board-view" >

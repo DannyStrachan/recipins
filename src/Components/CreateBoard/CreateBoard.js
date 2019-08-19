@@ -2,6 +2,7 @@ import './CreateBoard.css'
 import { AddCircle } from 'grommet-icons';
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {getUserBoards} from '../../ducks/recipinReducer'
 import axios from 'axios'
 class CreateBoard extends Component{
 
@@ -25,7 +26,7 @@ class CreateBoard extends Component{
             }))
             .catch(() => console.log(`Add Listing Failed!`))
             this.hideCreate()
-            this.props.getUserBoards()
+            this.props.getUserBoards(id)
     }
 
     // saveBoard = () => {
@@ -40,21 +41,20 @@ class CreateBoard extends Component{
         })
     }
 
-    handleChange = target => {
-        const name = target.name
-        const value = target.value
-        const {recipe} = this.props.props
-        const {user} = this.props.props
+    handleChange = e => {
+        const name = e.target.name
+        const value = e.target.value
+        const {recipe} = this.props
+        const {user} = this.props
         this.setState({
             [name]: value,
             boardImage: recipe.image_url,
             recipe,
             user
         })
-        console.log('name in create board:', name, 'target in create board:', target);
+        console.log('name in create board:', name, 'target in create board:', e.target);
         console.log('state:', this.state);
-        console.log('props:', this.props.props.recipe.image_url);
-        // console.log('user from props in createboard:', this.props.user);
+        console.log('props:', this.props.recipe.image_url);
     }
 
 
@@ -67,7 +67,7 @@ class CreateBoard extends Component{
                     <div className="close-save" onClick={this.hideCreate} >+</div>
                         <form className="create-board-form" >
                             <div className="add-board" onClick={e => this.createBoard(e)} ><AddCircle color='rgb(203, 9, 9)' size='large' /></div>
-                            <input className="create-input" name="boardName" placeholder="Create Board Here" onChange={e => this.handleChange(e.target)} />
+                            <input className="create-input" name="boardName" placeholder="Create Board Here" onChange={e => this.handleChange(e)} />
                         </form>
                 </div>
                 }
@@ -77,4 +77,4 @@ class CreateBoard extends Component{
     }
 }
 
-export default connect( null )( CreateBoard )
+export default connect( null, {getUserBoards} )( CreateBoard )

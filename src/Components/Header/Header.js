@@ -15,7 +15,7 @@ class Header extends Component{
         // const recipeName = e.target.elements.recipeName.value
         e.preventDefault()
         this.props.getRecipins(recipeName)
-        
+        document.getElementsByClassName('search')[0].value=null
     }
 
     render(){

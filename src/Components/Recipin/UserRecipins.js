@@ -2,6 +2,7 @@ import './Recipin.css'
 import React, {Component} from 'react'
 import Pin from './Pin'
 import {connect} from 'react-redux'
+import {getUserRecipins} from '../../ducks/recipinReducer'
 
 class UserRecipins extends Component{
     constructor(props) {
@@ -15,18 +16,15 @@ class UserRecipins extends Component{
         }
     }
 
-    componentDidUpdate() {
-        // store.subscribe(() => {
-        //     store.getState()
-        // })
+    componentDidMount() {
+        const {id: userId} = this.props.user.user
+        console.log('componentDidMount:', userId);
+        this.props.getUserRecipins(userId)
     }
 
     render(){
-        console.log('props in Recipin', this.props.user);
-        console.log('state recipins in Recipin:', this.state.recipins);
-        console.log('true or false', this.props.recipinsReducer.recipins === this.state.recipins);
         let {user} = this.props.user
-        console.log('user after destructure:', user);
+        console.log('user after destructure in UserRecipins:', user);
         
             let cards = this.props.recipinsReducer.userRecipins.map((recipe, i) => {
                 console.log('mapping', recipe)
@@ -39,9 +37,9 @@ class UserRecipins extends Component{
         
         
         return (
-            this.state.recipins > 0 ?
-                null :
-                <div className="Recipin" >{cards}</div> 
+            // this.state.recipins > 0 ?
+            //     null :
+                <div className="Boards" >{cards}</div> 
             // console.log('cards', cards)
         )
     }
@@ -52,4 +50,4 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps)(UserRecipins)
+export default connect(mapStateToProps, {getUserRecipins})(UserRecipins)
