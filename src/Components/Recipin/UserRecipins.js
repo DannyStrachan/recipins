@@ -1,10 +1,9 @@
 import './Recipin.css'
 import React, {Component} from 'react'
 import Pin from './Pin'
-// import store from '../../ducks/store'
 import {connect} from 'react-redux'
 
-class Recipin extends Component{
+class UserRecipins extends Component{
     constructor(props) {
         super(props)
         // const reduxState = store.getState()
@@ -29,7 +28,7 @@ class Recipin extends Component{
         let {user} = this.props.user
         console.log('user after destructure:', user);
         
-            let cards = this.props.recipinsReducer.recipins.map((recipe, i) => {
+            let cards = this.props.recipinsReducer.userRecipins.map((recipe, i) => {
                 console.log('mapping', recipe)
                 return (
                     
@@ -53,4 +52,4 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps)(Recipin)
+export default connect(mapStateToProps)(UserRecipins)

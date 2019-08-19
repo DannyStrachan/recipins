@@ -18,6 +18,6 @@ export default (
     <Route path="/dashboard" component={Dashboard} />
     <Route path="/profile" component={Profile} />
     <Route path="/about" component={About} />
-    <Route path="/board" component={Board} />
+    <Route path="/board/:boardId" component={Board} />
   </Switch>
 );

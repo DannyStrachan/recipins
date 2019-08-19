@@ -5,7 +5,7 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const authCtrl = require('./controllers/authController')
-// const rcpeCtrl = require('./controllers/recipeController')
+const rcpCtrl = require('./controllers/recipeController')
 // const userCtrl = require('./controllers/userController')
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
@@ -31,7 +31,13 @@ massive(CONNECTION_STRING).then(db => {
     })
 })
 
-// ENDPOINTS
+// USER ENDPOINTS
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.post('/auth/logout', authCtrl.logout)
+
+// PIN ENDPOINTS
+app.post('/api/createboard', rcpCtrl.createBoard)
+app.get('/api/boards/:userId', rcpCtrl.getUserBoards)
+app.post('/api/saved-recipins', rcpCtrl.saveRecipin)
+app.get('/api/saved-recipins/:boardId', rcpCtrl.getUserRecipins)

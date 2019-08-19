@@ -12,7 +12,7 @@ export default class Nav extends Component{
         addIsClicked: false
     }
 
-    showNav = () => {
+    showBoards = () => {
         this.setState({
             isClicked: !this.state.isClicked
         })
@@ -26,39 +26,31 @@ export default class Nav extends Component{
 
     render(){
         console.log('id passed through props', this.props.id);
+        const {user, recipe} = this.props
         return (
             <div className="Save">
             { this.state.isClicked ?
                 <div className="save-open">
                     <div className="save-header" >
-                        <div className="close-save" onClick={this.showNav} >+</div>
+                        <div className="close-save" onClick={this.showBoards} >+</div>
                         <h3 className="header-title" >Choose Board</h3>
                     </div>
                     <br/>
                     <div className="board-list" >
-                    <Boards id={this.props.id} />
+                    <Boards recipe={recipe} user={user} id={this.props.id} showBoards={this.showBoards} />
                     </div>
-                    {/* <ul className="board-list" >
-                        <li className="card">Board 1</li>
-                        <li className="card">Board 2</li>
-                        <li className="card">Board 3</li>
-                        <li className="card">Board 4</li>
-                        <li className="card">Board 5</li>
-                        <li className="card">Board 6</li>
-                        <li className="card">Board 7</li>
-                    </ul> */}
                     <br/>
                     <div className="create-board" >
                         <div className="add-board" onClick={this.showCreateBoard} ><AddCircle color='rgb(203, 9, 9)' size='large' /></div>
                         <h3 className="header-title" >Create Board</h3>
                     </div>
                     {!this.state.addIsClicked ? null :
-                    <CreateBoard props={this.props}/>
+                    <CreateBoard user={user} recipe={recipe}/>
                     }
                 </div>
                  :
                  <div className=" Nav-close" >
-                    <button className="share-save-view" onClick={this.showNav} ><Pin color='rgb(203, 9, 9)' /></button>
+                    <button className="share-save-view" onClick={this.showBoards} ><Pin color='rgb(203, 9, 9)' /></button>
                  </div>
             }
             </div>

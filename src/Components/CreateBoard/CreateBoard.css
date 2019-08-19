@@ -2,24 +2,25 @@
 
     border-top-right-radius: 18px;
     border-top-left-radius: 18px;
-    height: 9%;
+    height: 18%;
     width: 100vw;
     position: fixed;
-    top: 69vh;
+    top: 70vh;
     left: 0px;
     z-index: 5;
 }
 
 .active-create-board{
-    background-image: linear-gradient(rgba(203, 9, 9, 0.666), rgba(255, 255, 255, 0));
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.582));
     height: 100%;
     width: 100%;
     display: flex;
-    /* justify-content: space-around; */
+    border-radius: 18px;
 }
 
 .create-input{
     width: 80%;
+    height: 40%;
     border: none;
     margin-left: 9px;
 }
@@ -62,3 +63,14 @@
     border-bottom-left-radius: 9px;
     border-bottom-right-radius: 9px;
 }
+
+.Board {
+    background: rgb(34, 34, 34);
+    height: 94vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: fixed;
+    overflow-y: auto;
+  }

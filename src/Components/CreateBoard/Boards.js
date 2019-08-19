@@ -2,37 +2,40 @@ import './CreateBoard.css'
 import React, {Component} from 'react'
 import BoardCard from './BoardCard'
 import {connect} from 'react-redux'
+import {getUserBoards} from '../../ducks/recipinReducer'
 
 class Boards extends Component{
     constructor(props) {
         super(props)
 
         this.state = {
-            boards: [
-                {boardTitle: 'Dessert', board_id: 1, image_url: 'https://i.pinimg.com/originals/13/ff/2d/13ff2d3c3455b14121a5edab85d161e8.gif'},
-                {boardTitle: 'Snacks', board_id: 2},
-                {boardTitle: 'Healthy Meals', board_id: 3},
-                {boardTitle: 'Quick Eats', board_id: 4},
-                {boardTitle: 'Smoothies', board_id: 5},
-                {boardTitle: 'Cakes', board_id: 6},
-                {boardTitle: 'Mexican Meals', board_id: 7}]
+            boards: []
         }
     }
 
+    componentDidMount() {
+        const {id} = this.props.user.user
+        console.log('check userId:', id);
+        console.log('props in boards:', this.props);
+        this.props.getUserBoards(id)
+    }
+
     render(){
-        
-            let boardCards = this.state.boards.map((board, i) => {
-                // console.log('mapping', boardCards)
+        console.log('this.props.recipinsReducer:', this.props.recipinsReducer);
+        const {user} = this.props
+            let boardCards = this.props.recipinsReducer.userBoards.map((board, i) => {
                 return (
                     
-                    <BoardCard id={this.props.id} key={board.board_id} board={board}/>
-                    // <div>hello</div>
+                    <BoardCard showBoards={this.props.showBoards} user={user} recipe={this.props.recipe} id={this.props.id} key={board.id} board={board}/>
                 )
             })
         
         
         return (
             
+                // <div className="Boards" >{boardCards}</div> 
+                this.props.recipinsReducer.userBoards < 0 ?
+                null :
                 <div className="Boards" >{boardCards}</div> 
         )
     }
@@ -43,4 +46,4 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps)(Boards)
+export default connect(mapStateToProps, {getUserBoards})(Boards)

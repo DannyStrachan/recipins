@@ -26,8 +26,9 @@ export default class Pin extends React.Component{
 
 
     render() {
-        console.log('Pin this.props', this.props.recipe);
-        const { recipe } = this.props
+        console.log('Pin this.props recipe', this.props.recipe);
+        console.log('user passed to pin:', this.props.user);
+        const { recipe, user } = this.props
         console.log('after destructure', recipe);
         return (
             <div className={"card"}  >
@@ -42,7 +43,7 @@ export default class Pin extends React.Component{
                         <div className="hover-buttons">
                             <button  className="share-save-view"><ShareOption color='rgb(203, 9, 9)' /></button>
                             <a id='view' href={this.props.recipe.source_url} className="share-save-view" onClick={this.showPage}><View color='rgb(203, 9, 9)' /></a>
-                            < Save recipe={recipe} id={recipe.recipe_id}/>
+                            < Save recipe={recipe} user={user} id={recipe.recipe_id}/>
                         </div> :
                         null}
                     </div>
