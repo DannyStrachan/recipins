@@ -2,7 +2,7 @@ import './Header.css'
 import React, {Component} from 'react'
 import Nav from '../Nav/Nav'
 import {connect} from 'react-redux'
-import { Home, FormSearch } from 'grommet-icons';
+import { Home, FormSearch, Restaurant, Article } from 'grommet-icons';
 import { getRecipins } from '../../ducks/recipinReducer'
 import {Link} from 'react-router-dom'
 
@@ -40,9 +40,15 @@ class Header extends Component{
                     <input type="text" name="recipeName" className="search" placeholder="Search" />
                     <button className="button-search" style={buttonStyle} ><FormSearch color='whitesmoke' size='large' /></button>
                 </form>
-                    <Nav />
-
-                <div className="hidden-nav"></div>
+                <Nav />
+                    <div className="header-filter-buttons" >
+                        <div className="toggle-switch" ><Article /></div>
+                        <label className="switch">
+                            <input type="checkbox" />
+                            <span className="slider round"></span>
+                        </label>
+                        <div className="toggle-switch" ><Restaurant /></div>
+                    </div>
             </div>
         )
     }

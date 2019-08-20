@@ -4,14 +4,17 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { HashRouter } from "react-router-dom";
-import store from './ducks/store'
+import { store, persistor } from './ducks/store'
 import {Provider} from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
 ReactDOM.render(
   <Provider store={store} >
     <HashRouter>
-    <App />
-  </HashRouter>
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
+    </HashRouter>
   </Provider>,
   document.getElementById("root")
 );

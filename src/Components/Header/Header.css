@@ -21,3 +21,15 @@
 .icon{
     padding-top: 6px;
 }
+
+.header-filter-buttons{
+    background: rgba(128, 0, 128, 0.493);
+    position: absolute;
+    top: 39px;
+    left: 0;
+    z-index: 1;
+    /* height: 100%; */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}

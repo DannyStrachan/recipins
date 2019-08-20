@@ -1,7 +1,4 @@
 import React from 'react';
-// import Auth from './Components/Auth/Auth'
-// import CreateBoard from './Components/CreateBoard/CreateBoard'
-// import Nav from './Components/Nav/Nav'
 import Header from './Components/Header/Header'
 import routes from './routes'
 import {withRouter} from 'react-router-dom'
