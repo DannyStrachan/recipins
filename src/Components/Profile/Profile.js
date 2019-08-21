@@ -2,6 +2,7 @@ import './Profile.css'
 import Boards from '../CreateBoard/Boards'
 import UserRecipins from '../Recipin/UserRecipins'
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 // import axios from 'axios'
 import {connect} from 'react-redux'
 import {updateUser} from '../../ducks/userReducer'
@@ -61,7 +62,7 @@ class Profile extends Component{
                         <div className="profile-options" >
                             <div className="add-recipe-link" onClick={this.showCreateBoard} ><AddCircle color='rgb(203, 9, 9)' size='large' /></div>
                             <div className="messages-link" ><ChatOption color='rgb(27, 180, 233)' size='large' /></div>
-                            <div className="seller-profile-link" ><Currency color='rgb(44, 420, 44)' size='large' /></div>
+                            <Link to="/seller/profile" ><div className="seller-profile-link" ><Currency color='rgb(44, 420, 44)' size='large' /></div></Link>
                         </div>
                     </div>
                     <div className="profile-right" >

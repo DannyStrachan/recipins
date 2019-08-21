@@ -1,0 +1,84 @@
+.seller-profile-info{
+    display: flex;
+    justify-content: space-between;
+    background: rgb(24, 24, 24);
+    height: 100%;
+}
+
+.seller-profile-left{
+    background: royalblue;
+    justify-content: space-between;
+    width: 66%;
+}
+
+.seller-profile-name{
+    background: rgb(24, 24, 24);
+    color: whitesmoke;
+    height: 50%;
+    display: flex;
+    padding-left: 18px;
+    align-items: center;
+}
+
+.seller-profile-options{
+    background: rgb(24, 24, 24);
+    height: 50%;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.profile-right img{
+    width: 99px;
+    height: 99px;
+    border-radius: 50%;
+    margin: 18px;
+}
+
+.seller-top-half{
+  height: 24vh;
+}
+
+.seller-board-view{
+  background: rgb(25, 177, 37);
+  width: 100%;
+  height: 100%;
+}
+
+.seller-add-board{
+  background: rgba(128, 128, 128, 0.747);
+  border-radius: 9px;
+  width: 48vw;
+  height: 27vh;
+  margin: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board-dashboard, .pin-dashboard{
+    background: rgb(24, 24, 24);
+    color: whitesmoke;
+    height: 69vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 9px;
+    position: fixed;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.pin{
+    background: rgb(203, 9, 9);
+    width: 48%;
+    height: 160px;
+    margin: 3px;
+    border-radius: 9px;
+}
+

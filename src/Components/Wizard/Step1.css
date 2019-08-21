@@ -1,0 +1,53 @@
+.wizard-img{
+    width: 69vw;
+    object-fit: contain;
+    border-radius: 9px;
+    background: red;
+    box-shadow: 9px 9px 6px rgba(148, 148, 148, 0.342);
+}
+
+.form-1{
+    /* background: grey; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 60vh;
+    width: 100vw;
+}
+
+.wizard-input{
+    padding: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 69vw;
+}
+
+.wizard-input input{
+    width: 90%;
+    border: none;
+    box-shadow: 9px 9px 6px rgba(148, 148, 148, 0.342);
+}
+
+.Step1{
+    height: 94vh;
+    width: 100vw;
+    background: rgb(24, 24, 24);
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.wizard-button{
+    background: black;
+    color: whitesmoke;
+    padding: 6px;
+    width: 90px;
+    border-radius: 9px;
+    border: none;
+    font-weight: bold;
+    box-shadow: 9px 9px 6px rgba(148, 148, 148, 0.342);
+}
