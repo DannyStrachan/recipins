@@ -26,10 +26,7 @@ export default class Pin extends React.Component{
 
 
     render() {
-        console.log('Pin this.props recipe', this.props.recipe);
-        console.log('user passed to pin:', this.props.user);
         const { recipe, user } = this.props
-        console.log('after destructure', recipe);
         return (
             <div className={"card"}  >
                          <img id={recipe.recipe_id} className="img" alt={recipe.publisher} src={recipe.image_url} onClick={e => this.showButtons(e)} />

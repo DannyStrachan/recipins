@@ -1,6 +1,8 @@
 import './Recipin.css'
 import React, {Component} from 'react'
 import Pin from './Pin'
+// import axios from 'axios'
+import {updateUser} from '../../ducks/userReducer'
 // import store from '../../ducks/store'
 import {connect} from 'react-redux'
 
@@ -16,11 +18,14 @@ class Recipin extends Component{
         }
     }
 
-    componentDidUpdate() {
-        // store.subscribe(() => {
-        //     store.getState()
-        // })
-    }
+    // componentDidMount() {
+    //     axios.get('/api/checkSession')
+    //     .then(res => {
+    //       console.log('data:', res.data);
+    //       if (res.data.loggedIn){this.props.updateUser(res.data)}
+    //       })
+    //     console.log('App session:', this.props)
+    //   }
 
     render(){
         console.log('props in Recipin', this.props.user);
@@ -30,7 +35,6 @@ class Recipin extends Component{
         console.log('user after destructure:', user);
         
             let cards = this.props.recipinsReducer.recipins.map((recipe, i) => {
-                console.log('mapping', recipe)
                 return (
                     
                     <Pin key={recipe.recipe_id} user={user} recipe={recipe}/>
@@ -53,4 +57,4 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps)(Recipin)
+export default connect(mapStateToProps, {updateUser})(Recipin)

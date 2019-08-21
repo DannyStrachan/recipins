@@ -34,7 +34,8 @@ massive(CONNECTION_STRING).then(db => {
 // USER ENDPOINTS
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
-app.post('/auth/logout', authCtrl.logout)
+app.delete('/auth/logout', authCtrl.logout)
+app.get('/api/checkSession', authCtrl.checkSesh)
 
 // PIN ENDPOINTS
 app.post('/api/createboard', rcpCtrl.createBoard)

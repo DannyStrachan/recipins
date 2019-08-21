@@ -31,7 +31,14 @@ module.exports = {
             res.send(req.session.user)
         } else res.status(401).send('Username or Password incorrect...')
     },
-    async logout(req, res) {
+    async checkSesh(req, res) {
+        if (req.session.user) {
+            res.send(req.session.user)
+        } else {
+            res.status(403).send({loggedIn: false})
+        }
+    },
+    logout: (req, res) => {
         req.session.destroy()
         res.sendStatus(200)
     }

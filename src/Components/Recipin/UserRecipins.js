@@ -10,24 +10,36 @@ class UserRecipins extends Component{
         // const reduxState = store.getState()
         // console.log('reduxState:', reduxState);
 
-    console.log('props.recipinsReducer.recipins in Recipin:', this.props.recipinsReducer.recipins)
         this.state = {
             recipins: Object.keys(this.props.recipinsReducer.recipins).length > 0 ? props.recipinsReducer.recipins : props.recipinsReducer.recipins
         }
     }
 
-    componentDidMount() {
+    componentDidUpdate(prevProps, prevState) {
         const {id: userId} = this.props.user.user
-        console.log('componentDidMount:', userId);
-        this.props.getUserRecipins(userId)
+        if (prevProps.user.user.id !== this.props.user.user.id){
+            this.props.getUserRecipins(userId)
+        }
     }
+
+    componentDidMount() {
+        console.log('this is in userRecipins:', this.props)
+        const {id: userId} = this.props.user.user
+        const {user} = this.props.user
+        console.log('componentDidMount:', userId);
+        if (Object.keys(user).length > 0) {
+            this.props.getUserRecipins(userId)
+        }
+        
+    }
+
+    
 
     render(){
         let {user} = this.props.user
         console.log('user after destructure in UserRecipins:', user);
         
             let cards = this.props.recipinsReducer.userRecipins.map((recipe, i) => {
-                console.log('mapping', recipe)
                 return (
                     
                     <Pin key={recipe.recipe_id} user={user} recipe={recipe}/>
