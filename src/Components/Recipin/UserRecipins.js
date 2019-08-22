@@ -42,7 +42,7 @@ class UserRecipins extends Component{
             let cards = this.props.recipinsReducer.userRecipins.map((recipe, i) => {
                 return (
                     
-                    <Pin key={recipe.recipe_id} user={user} recipe={recipe}/>
+                    <Pin key={recipe.recipe_id + i} user={user} recipe={recipe}/>
                     
                 )
             })

@@ -33,6 +33,7 @@ module.exports = {
     },
     async checkSesh(req, res) {
         if (req.session.user) {
+            console.log('checkSeshCtrl:', req.session);
             res.send(req.session.user)
         } else {
             res.status(403).send({loggedIn: false})

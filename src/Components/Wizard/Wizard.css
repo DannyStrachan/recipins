@@ -1,12 +1,13 @@
 .wizard-img{
     width: 69vw;
+    /* height: 48vh; */
     object-fit: contain;
     border-radius: 9px;
-    background: red;
+    /* background: url('https://www.drdavidludwig.com/wp-content/uploads/2017/01/1-RIS_6IbCLYv1X3bzYW1lmA.jpeg'); */
     box-shadow: 9px 9px 6px rgba(148, 148, 148, 0.342);
 }
 
-.form-1{
+.form-1, .form-2{
     /* background: grey; */
     display: flex;
     flex-direction: column;
@@ -23,22 +24,21 @@
     justify-content: space-around;
     align-items: center;
     height: 100%;
-    width: 69vw;
+    width: 60vw;
 }
 
 .wizard-input input{
-    width: 90%;
+    width: 100%;
     border: none;
     box-shadow: 9px 9px 6px rgba(148, 148, 148, 0.342);
 }
 
-.Step1{
+.Step1, .Step2{
     height: 94vh;
     width: 100vw;
     background: rgb(24, 24, 24);
     display: flex;
     align-items: center;
-    /* justify-content: center; */
 }
 
 .wizard-button{
@@ -50,4 +50,18 @@
     border: none;
     font-weight: bold;
     box-shadow: 9px 9px 6px rgba(148, 148, 148, 0.342);
+}
+
+.step1-form-buttons, .step2-form-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+}
+
+.wizard-close{
+    position: absolute;
+    top: 66px;
+    left: 44px;
+    font-size: 33px;
+    cursor: pointer;
 }

@@ -74,3 +74,17 @@
     position: fixed;
     overflow-y: auto;
   }
+
+  .test{
+      background: purple;
+      width: 88px;
+      height: 88px;
+      color: white;
+  }
+
+  .Test{
+    background: rgb(128, 87, 0);
+    width: 88px;
+    height: 88px;
+    color: white;
+}

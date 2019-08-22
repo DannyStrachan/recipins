@@ -35,3 +35,12 @@ CREATE TABLE saved_recipins (
 );
 SELECT * FROM saved_recipins;
 
+DROP TABLE IF EXISTS seller_boards;
+CREATE TABLE seller_boards(
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    board_name VARCHAR(50) NOT NULL,
+    img_url TEXT NOT NULL
+);
+SELECT * FROM seller_boards;
+

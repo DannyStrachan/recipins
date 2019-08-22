@@ -6,7 +6,7 @@ const massive = require('massive')
 const session = require('express-session')
 const authCtrl = require('./controllers/authController')
 const rcpCtrl = require('./controllers/recipeController')
-// const userCtrl = require('./controllers/userController')
+const slrCtrl = require('./controllers/sellerController')
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
 const app = express()
@@ -43,3 +43,7 @@ app.get('/api/boards/:userId', rcpCtrl.getUserBoards)
 app.post('/api/saved-recipins', rcpCtrl.saveRecipin)
 app.get('/api/saved-board-recipins/:boardId', rcpCtrl.getBoardRecipins)
 app.get('/api/saved-recipins/:userId', rcpCtrl.getUserRecipins)
+
+// SELLER ENDPOINTS
+app.post('/api/create-seller-board', slrCtrl.createBoard)
+app.get('/api/seller-boards/:sellerId', slrCtrl.getSellerBoards)

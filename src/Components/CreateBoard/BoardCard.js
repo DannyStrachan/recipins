@@ -9,7 +9,7 @@ export default class Board extends React.Component{
     
     saveRecipin = (e) => {
         e.preventDefault()
-        if (window.location.hash === '#/profile'){
+        if (window.location.hash === '#/profile' ){
             this.viewBoard()
         } else {
         let { id: userId } = this.props.user.user

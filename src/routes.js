@@ -9,6 +9,7 @@ import Step1 from "./Components/Wizard/Step1";
 import Save from "./Components/Save/Save";
 import Share from "./Components/Share/Share";
 import About from "./Components/About/About";
+import Wizard from "./Components/Wizard/Wizard";
 import Board from "./Components/CreateBoard/Board"
 
 export default (
@@ -23,5 +24,6 @@ export default (
     <Route path="/step1" component={Step1} />
     <Route path="/about" component={About} />
     <Route path="/board/:boardId" component={Board} />
+    <Route path="/wizard" component={Wizard} />
   </Switch>
 );
