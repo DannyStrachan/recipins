@@ -12,7 +12,7 @@ export default class Board extends React.Component{
         if (window.location.hash === '#/profile' ){
             this.viewBoard()
         } else if (window.location.hash === '#/seller/profile' ){
-                this.viewBoard()
+                this.viewSellerBoard()
         } else {
         let { id: userId } = this.props.user.user
         let { id: boardId } = e.target
@@ -32,6 +32,12 @@ export default class Board extends React.Component{
         console.log('view board', this.props.board.id)
         console.log('window object:', window.location.hash);
         window.location.href = `http://localhost:3000/#/board/${this.props.board.id}`
+    }
+
+    viewSellerBoard = () => {
+        console.log('view board', this.props.board.id)
+        console.log('window object:', window.location.hash);
+        window.location.href = `http://localhost:3000/#/seller/board/${this.props.board.id}`
     }
 
  

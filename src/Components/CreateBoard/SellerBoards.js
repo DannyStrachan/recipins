@@ -2,8 +2,8 @@ import './CreateBoard.css'
 import React, {Component} from 'react'
 import BoardCard from './BoardCard'
 import { Add } from 'grommet-icons';
-import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import {getSellerBoards} from '../../ducks/edibleReducer'
 
 class SellerBoards extends Component{

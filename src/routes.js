@@ -11,6 +11,7 @@ import Share from "./Components/Share/Share";
 import About from "./Components/About/About";
 import Wizard from "./Components/Wizard/Wizard";
 import Board from "./Components/CreateBoard/Board"
+import SellerBoard from "./Components/CreateBoard/SellerBoard"
 
 export default (
   <Switch>
@@ -24,6 +25,7 @@ export default (
     <Route path="/step1" component={Step1} />
     <Route path="/about" component={About} />
     <Route path="/board/:boardId" component={Board} />
+    <Route path="/seller/board/:boardId" component={SellerBoard} />
     <Route path="/wizard" component={Wizard} />
   </Switch>
 );

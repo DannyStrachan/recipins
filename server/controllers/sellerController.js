@@ -16,6 +16,12 @@ module.exports = {
         let {sellerId} = req.params
         let boards = await db.find_seller_boards(+sellerId)
         res.send(boards)
+    },
+    async getBoardEdibles(req, res) {
+        let {boardId} = req.params
+        const db = req.app.get('db')
+        let boardEdibles = await db.find_board_edibles(+boardId)
+        res.send(boardEdibles)
     }
 }
 

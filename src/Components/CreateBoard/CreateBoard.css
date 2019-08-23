@@ -75,6 +75,17 @@
     overflow-y: auto;
   }
 
+  .SellerBoard {
+    background: rgb(219, 16, 16);
+    height: 94vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: fixed;
+    overflow-y: auto;
+  }
+
   .test{
       background: purple;
       width: 88px;

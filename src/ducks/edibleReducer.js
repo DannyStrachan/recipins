@@ -8,7 +8,8 @@ const initialState = {
     description: '',
     sellerId: '',
     price: '',
-    sellerBoards: []
+    sellerBoards: [],
+    boardEdibles: []
 }
 
 export const UPDATE_BOARD_NAME = 'UPDATE_BOARD_NAME'
@@ -22,6 +23,7 @@ export const GET_SELLER_BOARDS = 'GET_SELLER_BOARDS'
 export const UPDATE_STEP1 = 'UPDATE_STEP1'
 export const UPDATE_STEP2 = 'UPDATE_STEP2'
 export const UPDATE_STEP3 = 'UPDATE_STEP3'
+export const GET_BOARD_EDIBLES = 'GET_BOARD_EDIBLES'
 
 
 export function saveBoard(state) {
@@ -44,6 +46,17 @@ export function saveEdible(obj) {
         payload: data
     }
 }
+
+export function getBoardEdibles(boardId) {
+    const data = axios
+      .get(`/api/saved-board-edibles/${boardId}`)
+      .then(res => res.data);
+  
+    return {
+      type: GET_BOARD_EDIBLES,
+      payload: data
+    };
+  }
 
 export function getSellerBoards(sellerId) {
     console.log('getting seller  + "_FULFILLED"boards....');
@@ -104,6 +117,8 @@ export default function reducer(state = initialState, action) {
             return {...state, sellerBoards: payload}
         case GET_SELLER_BOARDS + "_PENDING":
             return {...state}
+        case GET_BOARD_EDIBLES + "_FULFILLED":
+            return { ...state, boardEdibles: payload };
         case CANCEL_CHANGES:
             return {...initialState}
         case UPDATE_STEP1:
