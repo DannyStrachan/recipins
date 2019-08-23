@@ -30,13 +30,11 @@ class Step3 extends Component{
         this.props.updateStep3(this.state)
     }
 
-    addEdible = (e) => {
-        e.preventDefault()
+    addEdibleWithBoard = () => {
+        // e.preventDefault()
         const {boardImage, boardName, sellerId, edibleImage} = this.props.edibles
         const {edibleName, description, price} = this.state
         let obj = {boardImage, boardName, sellerId, edibleImage, edibleName, description, price}
-        let propState = {boardImage, boardName}
-        this.props.saveBoard(propState)
         this.props.saveEdible(obj)
     }
 
@@ -52,8 +50,7 @@ class Step3 extends Component{
                         <input type="integer" name="price" defaultValue={price} onChange={e => this.handleChange(e)} placeholder="Edible Price" />
                         <div className="step2-form-buttons" >
                             <Link to="/wizard/step2" ><button className="wizard-button" onClick={this.saveChanges} >Go Back</button></Link>
-                            {/* <Link to="/seller/profile" ></Link> */}
-                            <button className="wizard-button" onClick={e => this.addEdible(e)} >Done</button>
+                            <Link to="/seller/profile"><button className="wizard-button"  onClick={this.addEdibleWithBoard}>Done</button></Link>
                         </div>
                     </div>
                 </form>

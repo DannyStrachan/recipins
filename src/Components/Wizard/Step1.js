@@ -1,4 +1,5 @@
 import "./Wizard.css"
+import {Add} from 'grommet-icons'
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {updateStep1} from '../../ducks/edibleReducer'
@@ -51,6 +52,9 @@ class Step1 extends Component{
     }
 
     render(){
+        let addButtonStyle = {
+            paddingLeft: '9px'
+        }
         let { boardName, boardImage } = this.props.edibles
         console.log('boardName and Image in Step1:', this.state.boardName, this.state.boardImage);
         console.log('step1 props:', this.props);
@@ -63,7 +67,7 @@ class Step1 extends Component{
                         <input type="text" name="boardName" defaultValue={boardName} onChange={e => this.handleChange(e)} placeholder="Board Name Here" />
                         <div className="step1-form-buttons" >
                             <Link to="/seller/profile" ><button className="wizard-button" onClick={this.saveChanges} >Save</button></Link>
-                            <Link to="/wizard/step2" ><button className="wizard-button" onClick={this.saveChanges} >Add An Edible</button></Link>
+                            <Link to="/wizard/step2" ><button className="wizard-button" onClick={this.saveChanges} ><Add size='small' color='whitesmoke' /><div style={addButtonStyle}>Edible</div></button></Link>
                         </div>
                     </div>
                 </form>

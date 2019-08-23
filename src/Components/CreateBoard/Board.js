@@ -20,9 +20,6 @@ class Board extends Component{
         let cards = this.props.recipinsReducer.boardRecipins.map((recipe, i) => {
             return (
                 <Pin key={recipe.recipe_id} recipe={recipe} />
-                    // <div>
-                    //     <h5>{recipe}</h5>
-                    // </div>
             )
         })
         return (

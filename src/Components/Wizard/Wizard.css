@@ -57,6 +57,9 @@
     border: none;
     font-weight: bold;
     box-shadow: 9px 9px 6px rgba(148, 148, 148, 0.342);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .step1-form-buttons, .step2-form-buttons{

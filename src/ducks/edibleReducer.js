@@ -34,6 +34,17 @@ export function saveBoard(state) {
     }
 }
 
+export function saveEdible(obj) {
+    console.log("saveEdible state:", obj);
+    const {boardImage, boardName, sellerId, edibleImage, edibleName, description, price} = obj
+    const data = axios.post('/api/create-seller-board', {boardImage, boardName, sellerId, edibleImage, edibleName, description, price})
+        .then(res => res.data)
+    return {
+        type: CANCEL_CHANGES,
+        payload: data
+    }
+}
+
 export function getSellerBoards(sellerId) {
     console.log('getting seller  + "_FULFILLED"boards....');
     const data = axios.get(`/api/seller-boards/${sellerId}`)
@@ -65,13 +76,6 @@ export function updateStep3(state) {
     return {
         type: UPDATE_STEP3,
         payload: state
-    }
-}
-
-export function saveEdible(obj) {
-    console.log("saveEdible state:", obj);
-    return {
-        type: CANCEL_CHANGES
     }
 }
 

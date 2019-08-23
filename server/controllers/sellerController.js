@@ -1,10 +1,15 @@
 module.exports = {
-    createBoard(req,res) {
-        const {sellerId, boardName, boardImage} = req.body
+    async createBoard(req,res) {
+        const {boardImage, boardName, sellerId, edibleImage, edibleName, description, price} = req.body
         const db = req.app.get('db')
-        db.create_seller_board([sellerId, boardName, boardImage])
-        .then(() => res.status(200).send('Added Board!'))
-        .catch(err => res.status(500).send('Add Failure!', err))
+        let results = await db.create_seller_board([sellerId, boardName, boardImage])
+        console.log('results:', results)
+        const {id: boardId} = results[0]
+        console.log('id:', boardId);
+        db.create_edible([sellerId, boardId, edibleImage, edibleName, description, price])
+        // .then(() => res.status(200).send('Added Board and Edible!'))
+        res.status(200).send('Added Board and Edible!')
+        // .catch(err => res.status(400).send('Add Failure!', err))
     },
     async getSellerBoards(req, res) {
         const db = req.app.get('db')
@@ -13,3 +18,12 @@ module.exports = {
         res.send(boards)
     }
 }
+
+// (async () => {
+//     try {
+//       let num = await promise13();
+//       console.log('num', num);
+//     } catch(e) {
+//       console.log('Error caught');
+//     }
+//   })();
