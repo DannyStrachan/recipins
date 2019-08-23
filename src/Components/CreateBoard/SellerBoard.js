@@ -14,6 +14,12 @@ class SellerBoard extends Component{
         this.props.getBoardEdibles(boardId)
     }
 
+    checkProps = () => {
+        const {boardId} = this.props.match.params
+        console.log('seller props:', boardId);
+        console.log('more:', this.props);
+    }
+
     render(){
         console.log('window object:', window);
         console.log('props:', this.props);
@@ -25,13 +31,14 @@ class SellerBoard extends Component{
             )
         })
         return (
-            // this.props.recipinsReducer.boardRecipins < 0 ?
-            // <div className="Board">{cards}</div> :
-            // null
             <div className="SellerBoard" >
-                <Link to="/seller/profile" className="seller-add-board" ><Add color='rgb(27, 180, 233)' size='xlarge' /></Link>
-                <div className="Recipin">{cards}</div>
-                <Link to="/seller/profile" className="seller-add-board" ><Add color='rgb(27, 180, 233)' size='xlarge' /></Link>
+                {/* <button to="/seller/profile" onClick={() => this.props.history.push('/seller/profile')}className="seller-add-board" ><Add color='rgb(27, 180, 233)' size='xlarge' /></button> */}
+                {/* <div className="Recipin"></div>
+             */}
+             {cards}
+                {/* <button onClick={this.checkProps}className="seller-add-board" ><Add color='rgb(27, 180, 233)' size='xlarge' /></button> */}
+                {/* <button onClick={() => this.props.history.push('/seller/profile')}className="seller-add-board" ><Add color='rgb(27, 180, 233)' size='xlarge' /></button> */}
+                <Link to="/wizard/step4" className="seller-add-board" ><Add onClick={console.log('boards props on click:', this.props)}color='rgb(27, 180, 233)' size='xlarge' /></Link>
             </div>
         )
     }

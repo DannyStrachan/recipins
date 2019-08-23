@@ -11,7 +11,7 @@ import { AddCircle, Pin, ChatOption } from 'grommet-icons';
 import CreateBoard from '../CreateBoard/CreateBoard'
 const link = `https://www.pyramidinternational.com/assets/img/products/WDC95580`
 
-class Profile extends Component{
+class SellerProfile extends Component{
 
     state = {
         pinsClicked: true,
@@ -97,4 +97,4 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps, {updateUser, getSellerBoards})(Profile)
+export default connect(mapStateToProps, {updateUser, getSellerBoards})(SellerProfile)

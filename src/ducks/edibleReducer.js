@@ -9,7 +9,8 @@ const initialState = {
     sellerId: '',
     price: '',
     sellerBoards: [],
-    boardEdibles: []
+    boardEdibles: [],
+    currentBoardId: ''
 }
 
 export const UPDATE_BOARD_NAME = 'UPDATE_BOARD_NAME'
@@ -24,6 +25,7 @@ export const UPDATE_STEP1 = 'UPDATE_STEP1'
 export const UPDATE_STEP2 = 'UPDATE_STEP2'
 export const UPDATE_STEP3 = 'UPDATE_STEP3'
 export const GET_BOARD_EDIBLES = 'GET_BOARD_EDIBLES'
+export const SET_BOARD_ID = 'SET_BOARD_ID'
 
 
 export function saveBoard(state) {
@@ -36,7 +38,15 @@ export function saveBoard(state) {
     }
 }
 
-export function saveEdible(obj) {
+export function setCurrentBoard(id) {
+    console.log('id from setCurrentBoard:', id);
+    return {
+        type: SET_BOARD_ID,
+        payload: id
+    }
+}
+
+export function saveEdibleWithBoard(obj) {
     console.log("saveEdible state:", obj);
     const {boardImage, boardName, sellerId, edibleImage, edibleName, description, price} = obj
     const data = axios.post('/api/create-seller-board', {boardImage, boardName, sellerId, edibleImage, edibleName, description, price})
@@ -44,6 +54,17 @@ export function saveEdible(obj) {
     return {
         type: CANCEL_CHANGES,
         payload: data
+    }
+}
+
+export function saveEdible(obj) {
+    console.log("saveEdible state:", obj);
+    // const {sellerId, edibleImage, edibleName, description, price} = obj
+    // const data = axios.post('/api/create-seller-board', {sellerId, edibleImage, edibleName, description, price})
+    //     .then(res => res.data)
+    return {
+        type: CANCEL_CHANGES
+        // payload: data
     }
 }
 
@@ -131,6 +152,8 @@ export default function reducer(state = initialState, action) {
         case UPDATE_STEP3:
             const { edibleName, description, price } = payload
             return {...state, edibleName, description, price}
+        case SET_BOARD_ID:
+            return {...state, currentBoardId: payload}
         default:
             return state
     }

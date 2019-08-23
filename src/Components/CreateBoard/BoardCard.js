@@ -1,8 +1,10 @@
 import './CreateBoard.css'
 import React from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
+import {setCurrentBoard} from '../../ducks/edibleReducer'
 
-export default class Board extends React.Component{
+class Board extends React.Component{
     state = {
         isClicked: false
     }
@@ -36,7 +38,10 @@ export default class Board extends React.Component{
 
     viewSellerBoard = () => {
         console.log('view board', this.props.board.id)
+        console.log('view board props', this.props);
+        const {id} = this.props.board
         console.log('window object:', window.location.hash);
+        this.props.setCurrentBoard(id)
         window.location.href = `http://localhost:3000/#/seller/board/${this.props.board.id}`
     }
 
@@ -60,3 +65,5 @@ export default class Board extends React.Component{
         )
     }
 }
+
+export default connect(null, {setCurrentBoard})(Board)

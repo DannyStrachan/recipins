@@ -61,6 +61,7 @@ class Step1 extends Component{
         return(
             <div className="Step1" >
                 <form className="form-1">
+                    <h1>Create a Board</h1>
                     <img className="wizard-img" alt="" src={this.state.boardImage}/>
                     <div className="wizard-input" >
                         <input type="text" name="boardImage" defaultValue={boardImage} onChange={e => this.handleChange(e)} placeholder="Image URL Here" />

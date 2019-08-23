@@ -2,20 +2,29 @@ import "./Wizard.css"
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {saveEdibleWithBoard, updateStep3, saveBoard} from '../../ducks/edibleReducer'
+import {saveEdible, updateStep3, saveBoard} from '../../ducks/edibleReducer'
 // import { UPDATE_EDIBLE_IMAGE, UPDATE_EDIBLE_NAME, UPDATE_DESCRIPTION } from '../../ducks/edibleReducer'
 // const link = `https://www.drdavidludwig.com/wp-content/uploads/2017/01/1-RIS_6IbCLYv1X3bzYW1lmA.jpeg`
 
-class Step3 extends Component{
+class Step5 extends Component{
     constructor(props){
         super(props)
         console.log('props:', props, 'vs this.props:', this.props);
         this.state = {
             edibleName: props.edibles.edibleName,
             description: props.edibles.description,
-            price: props.edibles.price
+            price: props.edibles.price,
+            sellerId: props.edibles.sellerId
         }
     }
+
+    componentDidMount() {
+        let {id} = this.props.user.user
+        console.log('props in step5:', this.props);
+        this.setState({
+            sellerId: id,
+        })
+      }
 
     handleChange = (e) => {
         e.preventDefault()
@@ -30,12 +39,13 @@ class Step3 extends Component{
         this.props.updateStep3(this.state)
     }
 
-    addEdibleWithBoard = () => {
+    addEdible = () => {
         // e.preventDefault()
-        const {boardImage, boardName, sellerId, edibleImage} = this.props.edibles
+        const {edibleImage, currentBoardId} = this.props.edibles
+        const {id: sellerId} = this.props.user.user
         const {edibleName, description, price} = this.state
-        let obj = {boardImage, boardName, sellerId, edibleImage, edibleName, description, price}
-        this.props.saveEdibleWithBoard(obj)
+        let obj = {sellerId, edibleImage, edibleName, description, price, currentBoardId}
+        this.props.saveEdible(obj)
     }
 
     render(){
@@ -46,11 +56,11 @@ class Step3 extends Component{
                 <form className="form-3">
                     <div className="wizard-input" >
                         <input type="text" name="edibleName" defaultValue={edibleName} onChange={e => this.handleChange(e)} placeholder="Edible Name" />
-                        <input type="text" name="description" defaultValue={description} onChange={e => this.handleChange(e)} placeholder="Description" />
+                        <textarea rows="4" cols="28" type="text" name="description" defaultValue={description} onChange={e => this.handleChange(e)} placeholder="Description" />
                         <input type="integer" name="price" defaultValue={price} onChange={e => this.handleChange(e)} placeholder="Edible Price" />
                         <div className="step2-form-buttons" >
-                            <Link to="/wizard/step2" ><button className="wizard-button" onClick={this.saveChanges} >Go Back</button></Link>
-                            <Link to="/seller/profile"><button className="wizard-button"  onClick={this.addEdibleWithBoard}>Done</button></Link>
+                            <Link to="/wizard/step4" ><button className="wizard-button" onClick={this.saveChanges} >Go Back</button></Link>
+                            <Link to="/seller/profile"><button className="wizard-button"  onClick={this.addEdible}>Done</button></Link>
                         </div>
                     </div>
                 </form>
@@ -63,4 +73,4 @@ const mapStateToProps = (reduxState) => {
     return reduxState
 }
 
-export default connect(mapStateToProps, {saveEdibleWithBoard, updateStep3, saveBoard})(Step3)
+export default connect(mapStateToProps, {saveEdible, updateStep3, saveBoard})(Step5)

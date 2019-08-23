@@ -3,16 +3,19 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {updateStep2} from '../../ducks/edibleReducer'
-// import { UPDATE_EDIBLE_IMAGE, UPDATE_EDIBLE_NAME, UPDATE_DESCRIPTION } from '../../ducks/edibleReducer'
 // const link = `https://www.drdavidludwig.com/wp-content/uploads/2017/01/1-RIS_6IbCLYv1X3bzYW1lmA.jpeg`
 
-class Step2 extends Component{
+class Step4 extends Component{
     constructor(props){
         super(props)
         console.log('props:', props, 'vs this.props:', this.props);
         this.state = {
             edibleImage: props.edibles.edibleImage
         }
+    }
+
+    componentDidMount() {
+        console.log('componentDMount props in step 4:', this.props);
     }
 
     handleChange = (e) => {
@@ -38,9 +41,9 @@ class Step2 extends Component{
                     <img className="wizard-img" alt="" src={edibleImage} />
                     <div className="wizard-input" >
                         <input type="text" name="edibleImage" defaultValue={edibleImage} onChange={e => this.handleChange(e)} placeholder="Edible Image" />
-                        <div className="step2-form-buttons" >
-                            <Link to="/wizard/step1" ><button className="wizard-button" onClick={this.saveChanges} >Go Back</button></Link>
-                            <Link to="/wizard/step3" ><button className="wizard-button" onClick={this.saveChanges} >Next</button></Link>
+                        <div className="step4-form-buttons" >
+                            {/* <Link to="/wizard/step1" ><button className="wizard-button" >Add Board</button></Link> */}
+                            <Link to="/wizard/step5" ><button className="wizard-button" onClick={this.saveChanges} >Next</button></Link>
                         </div>
                     </div>
                 </form>
@@ -53,4 +56,4 @@ const mapStateToProps = (reduxState) => {
     return reduxState
 }
 
-export default connect(mapStateToProps, {updateStep2})(Step2)
+export default connect(mapStateToProps, {updateStep2})(Step4)

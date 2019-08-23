@@ -68,6 +68,21 @@
     width: 69vw;
 }
 
+.step4-form-buttons{
+    display: flex;
+    width: 69vw;
+    justify-content: flex-end;
+}
+
+textarea{
+    background: black;
+    border-radius: 9px;
+    box-shadow: 9px 9px 6px rgba(148, 148, 148, 0.342);
+    border: none;
+    padding: 9px;
+    color: whitesmoke;
+}
+
 .wizard-close{
     position: absolute;
     top: 66px;
