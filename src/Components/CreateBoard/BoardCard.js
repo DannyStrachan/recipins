@@ -11,6 +11,8 @@ export default class Board extends React.Component{
         e.preventDefault()
         if (window.location.hash === '#/profile' ){
             this.viewBoard()
+        } else if (window.location.hash === '#/seller/profile' ){
+                this.viewBoard()
         } else {
         let { id: userId } = this.props.user.user
         let { id: boardId } = e.target

@@ -39,7 +39,7 @@ export default class Pin extends React.Component{
                         {this.state.isClicked ?
                         <div className="hover-buttons">
                             <button  className="share-save-view"><ShareOption color='rgb(203, 9, 9)' /></button>
-                            <a id='view' href={this.props.recipe.source_url} className="share-save-view" onClick={this.showPage}><View color='rgb(203, 9, 9)' /></a>
+                            <a id='view' rel="noopener noreferrer" target="_blank" href={this.props.recipe.source_url} className="share-save-view" onClick={this.showPage}><View color='rgb(203, 9, 9)' /></a>
                             < Save recipe={recipe} user={user} id={recipe.recipe_id}/>
                         </div> :
                         null}

@@ -46,8 +46,8 @@ class Nav extends Component {
                   <ContactInfo size="xlarge" color="rgb(9, 44, 180)" />
                 </li>
               </Link>
-              <li className="seller-link">
-                <Currency color="rgb(44, 420, 44)" size="xlarge" />
+              <li className="seller-link" onClick={this.showNav}>
+                <Link to="/seller/profile"><Currency color="rgb(44, 420, 44)" size="xlarge" /></Link>
               </li>
               <Link to="/about">
                 <li className="about-link" onClick={this.showNav}>

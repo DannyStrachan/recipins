@@ -44,3 +44,15 @@ CREATE TABLE seller_boards(
 );
 SELECT * FROM seller_boards;
 
+DROP TABLE IF EXISTS created_seller_edibles;
+CREATE TABLE created_seller_edibles (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    seller_board_id INT NOT NULL,
+    -- reference seller_boards primary id^
+    image_url TEXT,
+    title VARCHAR(60),
+    edible_description TEXT,
+    price INT
+);
+SELECT * FROM created_seller_edibles;

@@ -2,6 +2,7 @@ import "./Wizard.css"
 import React, {Component} from 'react'
 import Step1 from './Step1'
 import Step2 from './Step2'
+import Step3 from './Step3'
 import {Close} from 'grommet-icons'
 import {connect} from 'react-redux'
 import { cancelChanges } from '../../ducks/edibleReducer'
@@ -23,6 +24,7 @@ class Wizard extends Component{
                     <Switch>
                         <Route path="/wizard/step1" component={Step1} />
                         <Route path="/wizard/step2" component={Step2} />
+                        <Route path="/wizard/step3" component={Step3} />
                     </Switch>
                 </div>
             </HashRouter>

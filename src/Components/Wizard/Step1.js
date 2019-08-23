@@ -1,7 +1,7 @@
 import "./Wizard.css"
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import {saveBoard, updateStep1} from '../../ducks/edibleReducer'
+import {updateStep1} from '../../ducks/edibleReducer'
 // import { UPDATE_BOARD_NAME, UPDATE_BOARD_IMAGE, UPDATE_SELLER_ID } from '../../ducks/edibleReducer'
 // import store from '../../ducks/store'
 import {connect} from 'react-redux'
@@ -12,9 +12,9 @@ class Step1 extends Component{
         // let reduxState = store.getState()
         super(props)
         this.state = {
-            boardImage: props.boardImage,
-            boardName: props.boardName,
-            sellerId: props.sellerId
+            boardImage: props.edibles.boardImage,
+            boardName: props.edibles.boardName,
+            sellerId: props.edibles.sellerId
         }
 
         // super(props)
@@ -32,7 +32,7 @@ class Step1 extends Component{
         //   store.getState();
         // });
         this.setState({
-            sellerId: id
+            sellerId: id,
         })
       }
 
@@ -50,14 +50,10 @@ class Step1 extends Component{
         this.props.updateStep1(this.state)
     }
 
-    addBoard = () => {
-        console.log('hit addBoard');
-        this.props.saveBoard(this.state)
-    }
-
     render(){
-        console.log('props in step1:', this.props.user.user);
-        let { boardName, boardImage } = this.state
+        let { boardName, boardImage } = this.props.edibles
+        console.log('boardName and Image in Step1:', this.state.boardName, this.state.boardImage);
+        console.log('step1 props:', this.props);
         return(
             <div className="Step1" >
                 <form className="form-1">
@@ -66,8 +62,8 @@ class Step1 extends Component{
                         <input type="text" name="boardImage" defaultValue={boardImage} onChange={e => this.handleChange(e)} placeholder="Image URL Here" />
                         <input type="text" name="boardName" defaultValue={boardName} onChange={e => this.handleChange(e)} placeholder="Board Name Here" />
                         <div className="step1-form-buttons" >
-                            <Link to="/seller/profile" ><button className="wizard-button" onClick={this.addBoard} >Save</button></Link>
-                            <Link to="/wizard/step2" ><button className="wizard-button" onClick={this.saveChanges} >Add Edible</button></Link>
+                            <Link to="/seller/profile" ><button className="wizard-button" onClick={this.saveChanges} >Save</button></Link>
+                            <Link to="/wizard/step2" ><button className="wizard-button" onClick={this.saveChanges} >Add An Edible</button></Link>
                         </div>
                     </div>
                 </form>
@@ -76,8 +72,8 @@ class Step1 extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
-    return state
+const mapStateToProps = (reduxState) => {
+    return reduxState
 }
 
-export default connect(mapStateToProps, {saveBoard, updateStep1})(Step1)
+export default connect(mapStateToProps, {updateStep1})(Step1)
