@@ -46,5 +46,7 @@ app.get('/api/saved-recipins/:userId', rcpCtrl.getUserRecipins)
 
 // SELLER ENDPOINTS
 app.post('/api/create-seller-board', slrCtrl.createBoard)
+app.post('/api/create-edible', slrCtrl.createEdible)
 app.get('/api/seller-boards/:sellerId', slrCtrl.getSellerBoards)
 app.get('/api/saved-board-edibles/:boardId', slrCtrl.getBoardEdibles)
+app.get('/api/edible', slrCtrl.getEdible)

@@ -12,6 +12,7 @@ import About from "./Components/About/About";
 import Wizard from "./Components/Wizard/Wizard";
 import Board from "./Components/CreateBoard/Board"
 import SellerBoard from "./Components/CreateBoard/SellerBoard"
+import Edible from "./Components/Seller/Edible";
 
 export default (
   <Switch>
@@ -27,5 +28,6 @@ export default (
     <Route path="/board/:boardId" component={Board} />
     <Route path="/seller/board/:boardId" component={SellerBoard} />
     <Route path="/wizard" component={Wizard} />
+    <Route path="/edible/:edibleId" component={Edible} />
   </Switch>
 );

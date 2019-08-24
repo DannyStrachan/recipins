@@ -24,6 +24,11 @@ export default class SellerPin extends React.Component{
         // }
     }
 
+    showPage = () => {
+         console.log('showPage props:', this.props)
+        window.location.href = `http://localhost:3000/#/edible/${this.props.edible.id}`
+    }
+
 
     render() {
         const { edible } = this.props
