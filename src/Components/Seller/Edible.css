@@ -1,0 +1,86 @@
+.Edible-container{
+    background: rgb(24, 24, 24);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    overflow-y: auto;
+    width: 100vw;
+    height: 93vh;
+    padding-top: 33vh;
+    justify-content: space-evenly;
+}
+
+.edible-close{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.edible-name{
+    position: absolute;
+    top: 6vh;
+    width: 69vw;
+    font-size: 36px;
+    font-weight: bold;
+    color: whitesmoke;
+    /* z-index: 3; */
+}
+
+.edible-creator{
+    display: flex;
+    justify-content: space-between;
+    width: 69vw;
+    padding: 3px;
+    margin-bottom: 9px;
+}
+
+.edible-profile-img{
+    height: 39px;
+    max-width: 39px;
+    background: black;
+    border-radius: 50%;
+}
+
+.Edible-container img{
+    width: 69vw;
+    border-radius: 9px;
+    padding: 3px;
+    margin-bottom: 9px;
+}
+
+.edible-title{
+    width: 33vw;
+    color: rgb(218, 218, 218);
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 18px;
+}
+
+.edible-test{
+    width: 33vw;
+    background: green;
+    color: whitesmoke;
+    position: absolute;
+    bottom: 0px;
+}
+
+.edible-description{
+    background: none;
+    width: 66vw;
+    height: 800px;
+    margin-bottom: 33vh;
+    border-radius: 9px;
+    border-style: solid;
+    border-color: rgb(139, 139, 139);
+    color: whitesmoke;
+    display: flex;
+    padding: 9px;
+}
+
+.edible-price{
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(44, 420, 44);
+}

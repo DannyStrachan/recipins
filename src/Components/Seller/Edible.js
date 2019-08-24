@@ -1,6 +1,9 @@
+import './Edible.css'
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getEdible} from '../../ducks/edibleReducer'
+import { ChatOption, Close } from 'grommet-icons';
+import {Link} from 'react-router-dom'
 
 class Edible extends Component{
 
@@ -15,13 +18,31 @@ componentDidMount() {
 
 
     render() {
-         console.log('propsssss:', this.props);
+        console.log('propssssssssss:', this.props.user.user);
+         if (this.props.edibles.currentEdible && this.props.edibles.currentEdible[0]){
         return (
+            
             <div className="Edible-container" >
-                <div>Hello from Edible</div>
-                {/* <img alt="" src={this.props.}></img> */}
+
+                <Link to="/seller/profile" ><div className="edible-close"><Close /></div></Link>
+
+                <div className="edible-name">{this.props.edibles.currentEdible[0].title}</div>
+                
+                <div className="edible-creator">
+                    <img className="edible-profile-img" alt="" src={this.props.user.user.profilePic} />
+                    <div className="edible-title" >{this.props.user.user.username}</div>
+                </div>
+                <img alt="burger" src={this.props.edibles.currentEdible[0].image_url}></img>
+                <div className="edible-creator">
+                    <ChatOption color='rgb(27, 180, 233)' size='large'/>
+                    {/* <Currency color='rgb(44, 420, 44)' size='large'/> */}
+                    <div className="edible-price">${this.props.edibles.currentEdible[0].price}</div>
+                </div>
+                <div className="edible-description">
+                    {this.props.edibles.currentEdible[0].edible_description}
+                </div>
             </div>
-        )
+        )} else return null
     }
 }
 

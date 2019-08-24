@@ -9,7 +9,7 @@ import {updateUser} from '../../ducks/userReducer'
 import { AddCircle, Currency, Restaurant, Article } from 'grommet-icons';
 import { ChatOption } from 'grommet-icons';
 import CreateBoard from '../CreateBoard/CreateBoard'
-const link = `https://www.pyramidinternational.com/assets/img/products/WDC95580`
+// const link = `https://www.pyramidinternational.com/assets/img/products/WDC95580`
 
 class Profile extends Component{
 
@@ -66,7 +66,7 @@ class Profile extends Component{
                         </div>
                     </div>
                     <div className="profile-right" >
-                        <img alt="" src={link} />
+                        <img alt="" src={this.props.user.user.profilePic} />
                     </div>
                     {!this.state.addIsClicked ? null :
                     <CreateBoard props={this.props}/>

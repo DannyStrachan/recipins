@@ -69,7 +69,7 @@ export function saveEdible(obj) {
 
 export function getEdible(id) {
     console.log('id to be used in axios:', id);
-    const edible = axios.get('/api/edible', {id}).then(res => res.data)
+    const edible = axios.get(`/api/edible/${id}`).then(res => res.data)
     return {
         type: GET_EDIBLE,
         payload: edible

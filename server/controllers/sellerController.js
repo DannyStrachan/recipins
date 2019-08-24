@@ -30,11 +30,11 @@ module.exports = {
         res.send(boardEdibles)
     },
     async getEdible(req, res) {
-        console.log('hit controller:', req.body);
-        // const db = req.app.get('db')
-        // const {id} = req.body
-        // let edible = await db.find_edible(+id)
-        // res.send(edible)
+        console.log('hit controller:', req.params);
+        const db = req.app.get('db')
+        const {id} = req.params
+        let edible = await db.find_edible(+id)
+        res.send(edible)
     }
 }
 

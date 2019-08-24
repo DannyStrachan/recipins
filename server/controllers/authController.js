@@ -7,10 +7,11 @@ module.exports = {
         const { username, email, password} = req.body
         let [existingUser] = await db.find_user(username)
         if (existingUser) return res.status(400).send('Username already taken...')
+        const profilePic = `https://robohash.org/${username}`
         let salt = await bcrypt.genSalt(saltRounds)
         let hash = await bcrypt.hash(password, salt)
-        let [user] = await db.create_user([username, email, hash])
-        req.session.user = { username: user.username, email: user.email, id: user.id, loggedIn: true }
+        let [user] = await db.create_user([username, email, hash, profilePic])
+        req.session.user = { username: user.username, email: user.email, id: user.id, profilePic: user.profile_pic, loggedIn: true }
         // req.session.userId = req.session.user.id
         res.status(200).send(req.session.user)
     },
@@ -20,11 +21,13 @@ module.exports = {
         let [existingUser] = await db.find_user(username)
         if (!existingUser) return res.status(401).send("Username not found...")
         let result = await bcrypt.compare(password, existingUser.password)
+        console.log("result", existingUser);
         if (result) {
             req.session.user = {
                 username: existingUser.username,
                 email: existingUser.email,
                 id: existingUser.id,
+                profilePic: existingUser.profile_pic,
                 loggedIn: true
             }
             // req.session.userId = req.session.user.id
