@@ -11,7 +11,8 @@ const initialState = {
     sellerBoards: [],
     boardEdibles: [],
     currentBoardId: '',
-    currentEdible: []
+    currentEdible: [],
+    allEdibles: []
 }
 
 export const UPDATE_BOARD_NAME = 'UPDATE_BOARD_NAME'
@@ -28,6 +29,7 @@ export const UPDATE_STEP3 = 'UPDATE_STEP3'
 export const GET_BOARD_EDIBLES = 'GET_BOARD_EDIBLES'
 export const SET_BOARD_ID = 'SET_BOARD_ID'
 export const GET_EDIBLE = 'GET_EDIBLE'
+export const GET_ALL_EDIBLES = 'GET_ALL_EDIBLES'
 
 
 export function saveBoard(state) {
@@ -73,6 +75,14 @@ export function getEdible(id) {
     return {
         type: GET_EDIBLE,
         payload: edible
+    }
+}
+
+export function getAllEdibles() {
+    const edibles = axios.get(`/api/seller-edibles`).then(res => res.data)
+    return {
+        type: GET_ALL_EDIBLES,
+        payload: edibles
     }
 }
 
@@ -164,6 +174,8 @@ export default function reducer(state = initialState, action) {
             return {...state, currentBoardId: payload}
         case GET_EDIBLE + "_FULFILLED":
             return {...state, currentEdible: payload}
+        case GET_ALL_EDIBLES + "_FULFILLED":
+            return {...state, allEdibles: payload}
         default:
             return state
     }

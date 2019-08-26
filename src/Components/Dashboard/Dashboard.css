@@ -5,8 +5,9 @@
 
 .Dashboard {
   background: rgb(34, 34, 34);
-  height: 94vh;
+  height: 88vh;
   width: 100%;
+  padding-top: 6vh;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;

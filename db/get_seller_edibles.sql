@@ -1,0 +1,1 @@
+SELECT * FROM created_seller_edibles;

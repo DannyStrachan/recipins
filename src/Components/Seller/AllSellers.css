@@ -1,0 +1,9 @@
+.AllSellers-container{
+    height: 87vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: fixed;
+    overflow-y: auto;
+}

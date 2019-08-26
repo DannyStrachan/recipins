@@ -35,6 +35,11 @@ module.exports = {
         const {id} = req.params
         let edible = await db.find_edible(+id)
         res.send(edible)
+    },
+    async getAllEdibles(req, res) {
+        const db = req.app.get('db')
+        let allEdibles = await db.get_seller_edibles()
+        res.send(allEdibles)
     }
 }
 

@@ -6,25 +6,34 @@
     position: fixed;
     overflow-y: auto;
     width: 100vw;
-    height: 93vh;
-    padding-top: 33vh;
+    height: 91vh;
+    padding-top: 3vh;
     justify-content: space-evenly;
 }
 
+.edible-display{
+    width: 90vw;
+    border-radius: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 18px;
+}
+
 .edible-close{
-    position: absolute;
-    top: 30px;
+    position: fixed;
+    top: 60px;
     left: 30px;
+    z-index: 9;
 }
 
 .edible-name{
-    position: absolute;
-    top: 6vh;
-    width: 69vw;
-    font-size: 36px;
+    display: flex;
+    width: 60vw;
+    font-size: 27px;
     font-weight: bold;
     color: whitesmoke;
-    /* z-index: 3; */
 }
 
 .edible-creator{
@@ -58,19 +67,11 @@
     padding-top: 18px;
 }
 
-.edible-test{
-    width: 33vw;
-    background: green;
-    color: whitesmoke;
-    position: absolute;
-    bottom: 0px;
-}
-
 .edible-description{
     background: none;
     width: 66vw;
-    height: 800px;
-    margin-bottom: 33vh;
+    height: 200px;
+    margin-bottom: 9vh;
     border-radius: 9px;
     border-style: solid;
     border-color: rgb(139, 139, 139);

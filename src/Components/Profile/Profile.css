@@ -59,6 +59,19 @@
     overflow-y: auto;
 }
 
+.edible-dashboard{
+  background: rgb(24, 24, 24);
+  color: whitesmoke;
+  height: 64vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 18px;
+  position: fixed;
+  width: 100%;
+  overflow-y: auto;
+}
+
 .pin{
     background: rgb(203, 9, 9);
     width: 48%;
@@ -133,11 +146,11 @@
   }
 
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: rgb(44, 420, 44);
   }
 
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px rgb(184, 220, 44);
   }
 
   input:checked + .slider:before {

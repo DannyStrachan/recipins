@@ -23,14 +23,23 @@
 }
 
 .header-filter-buttons{
-    background: rgba(128, 0, 128, 0.493);
     position: absolute;
-    top: 39px;
+    top: 3px;
     left: 0;
     z-index: 1;
     /* height: 100%; */
     width: 100%;
     display: flex;
     justify-content: space-around;
-    display: none;
+    /* display: none; */
 }
+
+.header-filter-buttons .switch{
+    width: 60vw;
+}
+
+.header-filter-buttons input:checked + .slider:before {
+    -webkit-transform: translateX(182px);
+    -ms-transform: translateX(182px);
+    transform: translateX(182px);
+  }

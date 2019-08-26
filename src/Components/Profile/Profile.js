@@ -1,6 +1,7 @@
 import './Profile.css'
 import Boards from '../CreateBoard/Boards'
 import UserRecipins from '../Recipin/UserRecipins'
+import AllSellers from '../Seller/AllSellers'
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 // import axios from 'axios'
@@ -16,7 +17,8 @@ class Profile extends Component{
     state = {
         pinsClicked: true,
         buttonText: 'Pins',
-        addIsClicked: false
+        addIsClicked: false,
+        isClicked: false
     }
 
     // componentDidMount() {
@@ -44,6 +46,12 @@ class Profile extends Component{
         })
     }
 
+    changeView = () => {
+      this.setState({
+        isClicked: !this.state.isClicked
+      })
+    }
+
     showCreateBoard = () => {
         this.setState({
             addIsClicked: !this.state.addIsClicked
@@ -53,6 +61,7 @@ class Profile extends Component{
     render(){
          console.log('props inside profile:', this.props);
          console.log('session:', this.props);
+         console.log('profile-window:', window.location.hash);
         return (
             <div className="Profile">
                 <div className="top-half" >
@@ -77,13 +86,19 @@ class Profile extends Component{
                     <button className="toggle-button" onClick={this.toggleDisplay} >{this.state.buttonText}</button>
                     <div className="toggle-switch" ><Article /></div>
                     <label className="switch">
-                        <input type="checkbox" />
+                        <input onClick={this.changeView} type="checkbox" />
                         <span className="slider round"></span>
                     </label>
                     <div className="toggle-switch" ><Restaurant /></div>
                 </div>
                 </div>
-                
+                { this.state.isClicked ? 
+                    <div className="edible-dashboard" >
+                        {/* <div className="edible-view" > */}
+                            <AllSellers  />
+                        {/* </div> */}
+                    </div>  : 
+                <div>
                 {this.state.pinsClicked ?
                 <div className="pin-dashboard" >
                     <div className="board-view" >
@@ -94,7 +109,9 @@ class Profile extends Component{
                     <div className="board-view" >
                         <Boards id={this.props.id} />
                     </div>
-                </div>}
+                </div>} 
+                </div>
+            }
                 
             </div>
         )
