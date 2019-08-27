@@ -46,7 +46,8 @@ export default class SellerPin extends React.Component{
                         {this.state.isClicked ?
                         <div className="hover-buttons">
                             <button  className="share-save-view"><ShareOption color='rgb(203, 9, 9)' /></button>
-                            <a id='view' rel="noopener noreferrer" target="_blank" href={this.props.edible.image_url} className="share-save-view" onClick={this.showPage}><View color='rgb(203, 9, 9)' /></a>
+                            <div id='view' className="share-save-view" onClick={this.showPage}><View color='rgb(203, 9, 9)' /></div>
+                            {/* rel="noopener noreferrer" target="_blank" href={this.props.edible.image_url} */}
                             < Save recipe={edible} user={user_id} id={edible.id}/>
                         </div> :
                         null}

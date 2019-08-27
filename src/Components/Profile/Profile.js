@@ -4,6 +4,7 @@ import UserRecipins from '../Recipin/UserRecipins'
 import AllSellers from '../Seller/AllSellers'
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+// import socket from '../../sockets'
 // import axios from 'axios'
 import {connect} from 'react-redux'
 import {updateUser} from '../../ducks/userReducer'
@@ -70,7 +71,7 @@ class Profile extends Component{
                         <h1 className="profile-name" >{this.props.user.user.username}</h1>
                         <div className="profile-options" >
                             <div className="add-recipe-link" onClick={this.showCreateBoard} ><AddCircle color='rgb(203, 9, 9)' size='large' /></div>
-                            <div className="messages-link" ><ChatOption color='rgb(27, 180, 233)' size='large' /></div>
+                            <Link to="/chatroom/convos" ><div className="messages-link" ><ChatOption color='rgb(27, 180, 233)' size='large' /></div></Link>
                             <Link to="/seller/profile" ><div className="seller-profile-link" ><Currency color='rgb(44, 420, 44)' size='large' /></div></Link>
                         </div>
                     </div>
