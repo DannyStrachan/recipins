@@ -56,3 +56,12 @@ CREATE TABLE created_seller_edibles (
     price INT
 );
 SELECT * FROM created_seller_edibles;
+
+DROP TABLE IF EXISTS edible_rooms;
+CREATE TABLE edible_rooms (
+    room_id VARCHAR(9),
+    user_id INT,
+    creator_id INT,
+    room_img TEXT
+);
+SELECT * FROM edible_rooms;

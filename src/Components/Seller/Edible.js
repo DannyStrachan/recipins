@@ -4,16 +4,68 @@ import { connect } from "react-redux";
 import { getEdible } from "../../ducks/edibleReducer";
 import { ChatOption, Close } from "grommet-icons";
 import { Link } from "react-router-dom";
+import socket from '../../sockets'
 
 class Edible extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      combinedIds: ''
+    }
+  }
+
   componentDidMount() {
     console.log("id to search:", this.props.match.params.edibleId);
     const { edibleId: id } = this.props.match.params;
     this.props.getEdible(id);
   }
 
+  combineBoth = () => {
+    console.log('user ID to be combined:', this.props.user.user.id);
+    console.log('seller ID to be combined:', this.props.edibles.currentEdible[0].seller_id);
+    const {title} = this.props.edibles.currentEdible[0]
+    const {seller_id} = this.props.edibles.currentEdible[0]
+    const {id} = this.props.user.user
+    const sellerIdString = `${seller_id.toString()}`
+    const userIdString = `${id.toString()}`
+    const titleString = `${title.toString()}`
+    const addColon = ':'
+    let combinedIds
+      if (sellerIdString >= userIdString) {
+        combinedIds = sellerIdString.concat(addColon, userIdString, addColon, titleString)
+      
+        this.setState({
+          combinedIds
+        })
+      } else {
+        combinedIds = userIdString.concat(addColon, sellerIdString, addColon, titleString)
+      
+        this.setState({
+          combinedIds
+        })
+      }
+      console.log('combining...:', combinedIds);
+  }
+
+  combineAwait = async () => {
+    await this.combineBoth()
+    this.startChat()
+  }
+
+  startChat = () => {
+    let {combinedIds: roomId} = this.state
+    console.log('starting chat:', this.state.combinedIds);
+    const {id: userId} = this.props.user.user
+    const {seller_id: creatorId} = this.props.edibles.currentEdible[0]
+    const {image_url: roomImg} = this.props.edibles.currentEdible[0]
+    const data = {roomId, userId, creatorId, roomImg}
+    console.log('starting chat data:', data);
+    socket.emit('join room', data)
+    this.props.history.push('/chatroom')
+  }
+
   render() {
-    console.log("propssssssssss:", this.props.user.user);
+    console.log("propssssssssss:", this.props);
     if (
       this.props.edibles.currentEdible &&
       this.props.edibles.currentEdible[0]
@@ -29,14 +81,14 @@ class Edible extends Component {
                     <div className="edible-name">{this.props.edibles.currentEdible[0].title}</div>
 
                     <div className="edible-creator">
-                        <img className="edible-profile-img" alt="" src={this.props.user.user.profilePic} />
-                        <div className="edible-title">{this.props.user.user.username}</div>
+                        <img className="edible-profile-img" alt="" src={this.props.edibles.currentEdible[0].profile_pic} />
+                        <div className="edible-title">{this.props.edibles.currentEdible[0].username}</div>
                     </div>
 
                     <img alt="burger" src={this.props.edibles.currentEdible[0].image_url} />
 
                     <div className="edible-creator">
-                        <ChatOption color="rgb(27, 180, 233)" size="large" />
+                        <ChatOption onClick={this.combineAwait} color="rgb(27, 180, 233)" size="large" />
                         {/* <Currency color='rgb(44, 420, 44)' size='large'/> */}
                         <div className="edible-price">
                             ${this.props.edibles.currentEdible[0].price}

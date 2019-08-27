@@ -13,6 +13,8 @@ import Wizard from "./Components/Wizard/Wizard";
 import Board from "./Components/CreateBoard/Board"
 import SellerBoard from "./Components/CreateBoard/SellerBoard"
 import Edible from "./Components/Seller/Edible";
+import ChatRoom from "./Components/Chat/ChatRoom";
+import ChatConvos from "./Components/Chat/ChatConvos";
 
 export default (
   <Switch>
@@ -29,5 +31,7 @@ export default (
     <Route path="/seller/board/:boardId" component={SellerBoard} />
     <Route path="/wizard" component={Wizard} />
     <Route path="/edible/:edibleId" component={Edible} />
+    <Route path="/chatroom/convos" component={ChatConvos} />
+    <Route path="/chatroom" component={ChatRoom} />
   </Switch>
 );
