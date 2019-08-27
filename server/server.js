@@ -1,4 +1,3 @@
-const path = require('path');
 require("dotenv").config({path: __dirname + "/../.env"});
 const express = require('express')
 const massive = require('massive')
@@ -10,6 +9,8 @@ const socket = require('socket.io')
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
 const app = express()
+
+app.use( express.static( `${__dirname}/../build` ) );
 
 app.use(express.json())
 
@@ -103,6 +104,6 @@ app.get('/api/edible/:id', slrCtrl.getEdible)
 app.get('/api/seller-edibles', slrCtrl.getAllEdibles)
 
 
-app.get('*', (req, res)=>{
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-});
+// app.get('*', (req, res)=>{
+//     res.sendFile(path.join(__dirname, '../build/index.html'));
+// });
