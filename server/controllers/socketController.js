@@ -11,7 +11,6 @@ module.exports = {
                 let messages = await db.create_room(roomId, +userId, +creatorId, roomImg)
                 socket.join(roomId)
                 io.in(roomId).emit('room joinedz', messages)
-            console.log('sending messages:', messages);
             } else {
                 socket.join(confirmedRoom[0].room_id)
                 io.in(confirmedRoom[0].room_id).emit('room joined', confirmedRoom)
@@ -20,8 +19,13 @@ module.exports = {
         })
         socket.on('get existing messages', async data => {
             let messages = await db.get_messages(data)
-            console.log('coming from db:', messages);
             io.to(data).emit('message sent', messages)
+        })
+
+        // GET ROOMS
+        socket.on('get rooms', async id => {
+            let foundRooms = await db.get_user_rooms(id)
+            socket.emit('found rooms', foundRooms)
         })
 
         // NEW MESSAGE

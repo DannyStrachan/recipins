@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.ChatConvos-container{
+    width: 90vw;
+    height: 90vh;
+    border-radius: 9px;
+    margin: 0 auto;
+    overflow: auto;
+    margin-top: 3vh;
+}
+.room-image{
+    width: 90vw;
+    height: 18vh;
+    border-radius: 9px;
+}

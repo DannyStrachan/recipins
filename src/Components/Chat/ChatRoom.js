@@ -4,6 +4,7 @@ import socket from '../../sockets'
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import { Link } from "react-router-dom";
+const moment = require('moment')
 class ChatRoom extends Component{
     state = {
         text: '',
@@ -21,7 +22,7 @@ class ChatRoom extends Component{
             roomId: data[0].room_id
           })
           socket.emit('get existing messages', data[0].room_id)
-          console.log('state after return:', this.state.roomId);
+          console.log('state after return:', this.state);
         })
         socket.on('message sent', data => {
             console.log('sent message received: ', data);
@@ -36,9 +37,10 @@ class ChatRoom extends Component{
             console.log('loaction received: ', data);
             let messagesArray = [...this.state.messages]
             messagesArray.push(data)
+            console.log('msgAry:', messagesArray, "data:", data);
             this.setState({
                 text: data.text,
-                messages: [messagesArray]
+                messages: messagesArray
             })
         });
     }
@@ -60,7 +62,7 @@ class ChatRoom extends Component{
             from: username,
             roomId,
             userId: id,
-            createdAt: new Date().getTime()
+            createdAt: moment().startOf('minute').fromNow()
         })
             document.getElementsByClassName('chat-input')[0].value=null
     }
@@ -94,42 +96,42 @@ class ChatRoom extends Component{
         // const map = `https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393`
         let {messages} = this.state
         let msgs = messages.map((message, i) => {
-            console.log('mapping time', message);
+
             return (
-            <div>
+            <div key={i}>
                 { message.username === this.props.user.user.username ? 
                     <div className="each-user-message">
-                        <img className="message-profile-pic" alt="" src={message.profile_pic} />
-                        <div className="user-chatroom-message" key={i + message.created_at}>
+                        <img className="message-profile-pic" alt="" src={message.profile_pic || `https://robohash.org/${message.username}`} />
+                        <div className="user-chatroom-message" >
 
                             <div className="sender-info">
-                                <p className="chatroom-from">from: {message.username}</p>
+                                <p className="chatroom-from">from: {message.username || message.from}</p>
                                 {/* <p className="chatroom-at">at: {message.created_at}</p> */}
                             </div>
                             <div className="chatroom-content">
-                                <p className="chatroom-text" style={{color: '#fff'}}>{message.message}</p>
+                                <p className="chatroom-text" style={{color: '#fff'}}>{message.message || message.text}</p>
                                 {message.url ? <a className="chatroom-link" rel="noopener noreferrer" target="_blank" href={message.url} >{message.url}</a> : null}
                             </div>
 
                         </div>
-                                <p className="chatroom-at">at: {message.created_at}</p>
+                                <p className="chatroom-at">{message.created_at || message.createdAt}</p>
                     </div> 
                     : 
                     <div className="each-seller-message">
-                        <img className="message-profile-pic" alt="" src={message.profile_pic} />
-                        <div className="chatroom-message" key={i + message.created_at}>
+                        <img className="message-profile-pic" alt="" src={message.profile_pic || `https://robohash.org/${message.username}`} />
+                        <div className="chatroom-message" >
 
                             <div className="sender-info">
-                                <p className="chatroom-from">from: {message.username}</p>
+                                <p className="chatroom-from">from: {message.username || message.from}</p>
                                 {/* <p className="chatroom-at">at: {message.created_at}</p> */}
                             </div>
                             <div className="chatroom-content">
-                                <p className="chatroom-text" style={{color: '#fff'}}>{message.message}</p>
+                                <p className="chatroom-text" style={{color: '#fff'}}>{message.message || message.text}</p>
                                 {message.url ? <a className="chatroom-link" rel="noopener noreferrer" target="_blank" href={message.url} >{message.url}</a> : null}
                             </div>
 
                         </div>
-                                <p className="chatroom-at">at: {message.created_at}</p>
+                                <p className="chatroom-at-seller">{message.created_at || message.createdAt}</p>
                     </div>}
             </div>
             )
@@ -141,7 +143,7 @@ class ChatRoom extends Component{
             <img alt="" className="private-chat-background" src={this.state.obj.room_img} />
             <header>
                 <h2>Chat Room</h2>
-                <button className="chat-location" onClick={this.findLocation}>Send Location</button>
+                <button className="chat-location-btn" onClick={this.findLocation}>Send Location</button>
             </header>
                 <section style={{overflow: 'auto'}}>
                     {messages && messages.length ? ( <div>{msgs}</div> ): null}

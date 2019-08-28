@@ -72,6 +72,6 @@ CREATE TABLE edible_messages (
     room_id VARCHAR(44),
     user_id INT,
     message TEXT,
-    created_at VARCHAR(20)
+    created_at VARCHAR(60)
 );
 SELECT * FROM edible_messages;

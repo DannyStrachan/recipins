@@ -1,10 +1,12 @@
+const moment = require('moment')
+
 let generateMessage = (from, text, roomId, createdAt, userId) => {
     return {
-        from,
-        text,
+        username: from,
+        message: text,
         roomId,
         userId,
-        createdAt
+        created_at: createdAt
         // ,
         // createdAt: new Date().getTime()
     }
@@ -15,7 +17,8 @@ let generateLocationMessage = (from, lat, lng) => {
         from,
         text: 'Here is my location',
         url: `https://www.google.com/maps?q=${lat}, ${lng}`,
-        createdAt: new Date().getTime()
+        createdAt: moment().startOf('minute').fromNow(),
+        profile_pic: `https://robohash.org/${from}`
     }
 }
 

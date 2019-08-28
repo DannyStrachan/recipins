@@ -32,6 +32,6 @@ export default (
     <Route path="/wizard" component={Wizard} />
     <Route path="/edible/:edibleId" component={Edible} />
     <Route path="/chatroom/convos" component={ChatConvos} />
-    <Route path="/chatroom" component={ChatRoom} />
+    <Route path="/chatroom/:roomId" component={ChatRoom} />
   </Switch>
 );
