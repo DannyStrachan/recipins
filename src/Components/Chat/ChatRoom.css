@@ -4,12 +4,33 @@
   }
 
 .ChatRoom-container{
-    background: rgb(24, 24, 24);
+    /* background: rgb(24, 24, 24); */
     width: 100vw;
     height: 94vh;
     display: flex;
     flex-direction: column;
     position: relative;
+}
+
+.ChatRoom-container section{
+    display: flex;
+    /* background: rgb(59, 5, 5); */
+    max-width: 96vw;
+    height: 69vh;
+    margin: 0 auto;
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.ChatRoom-container header{
+    display: flex;
+    /* background: red; */
+    width: 70%;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+    padding: 9px;
+    height: 9vh;
 }
 
 .chat-form{
@@ -30,7 +51,23 @@
     border: none;
     border-radius: 9px;
     color: whitesmoke;
+    font-weight: bold;
+    font-size: 12px;
 }
+
+.chat-location{
+    background: rgba(203, 9, 9, 0.589);
+    width: 30%;
+    height: 33px;
+    border: none;
+    border-radius: 9px;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 12px;
+    /* position: fixed;
+    top: 33%; */
+}
+
 .chat-input{
     background: black;
     color: whitesmoke;
@@ -44,4 +81,109 @@
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: -1;
+}
+
+.chatroom-at{
+    /* background: rgb(0, 128, 38); */
+    border-radius: 9px;
+    text-align: left;
+    font-size: 9px;
+}
+.chatroom-from{
+    /* background: rgb(0, 128, 107); */
+    border-radius: 9px;
+    text-align: left;
+    color: rgb(201, 201, 201);
+    font-size: 12px;
+}
+.chatroom-link{
+    /* background: rgb(0, 60, 128); */
+    border-radius: 9px;
+    word-break: break-all;
+    text-align: left;
+    padding-left: 9px;
+}
+.chatroom-content{
+    display: flex;
+    flex-direction: column;
+}
+.chatroom-text{
+    /* background: rgba(0, 0, 255, 0.507); */
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    text-align: left;
+    word-break: normal;
+    margin-left: 9px;
+    margin-right: 9px;
+}
+.sender-info{
+    /* background: green; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100;
+    padding: 3px;
+}
+
+.chatroom-message{
+    background-image: linear-gradient(33deg, rgba(163, 93, 163, 0.9), rgba(163, 93, 63, 0.6), rgba(163, 93, 163, 0.3));
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    margin: 9px;
+    border-radius: 9px;
+    display: flex;
+    padding-left: 9px;
+    padding-right: 9px;
+    /* margin-right: 69px; */
+}
+/* rgba(93, 155, 163, 0.6)) */
+.user-chatroom-message{
+    background-image: linear-gradient(-33deg, rgba(93, 169, 163, 0.9), rgba(63, 163, 63, 0.6), rgb(93, 169, 163, 0.3));
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    margin: 9px;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-left: 9px;
+    padding-right: 9px;
+    /* margin-left: 69px; */
+}
+
+.message-profile-pic{
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+}
+
+.each-user-message{
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 100%;
+    color: whitesmoke;
+    font-weight: bold;
+    justify-content: space-around;
+    background-image: linear-gradient(90deg, rgba(133, 133, 133, 0.6), rgba(269, 269, 269, 0.0));
+    margin-bottom: 3px;
+    border-radius: 9px;
+    padding: 3px;
+    /* padding-left: 18px; */
+}
+.each-seller-message{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: whitesmoke;
+    font-weight: bold;
+    justify-content: space-around;
+    background-image: linear-gradient(-90deg, rgba(133, 133, 133, 0.6), rgba(267, 269, 269, 0.0));
+    margin-bottom: 3px;
+    border-radius: 9px;
+    padding: 3px;
+    /* padding-left: 18px; */
 }

@@ -1,123 +1,164 @@
 import "./ChatRoom.css"
+import { Close } from "grommet-icons";
 import socket from '../../sockets'
 import React, {Component} from 'react';
-export default class ChatRoom extends Component{
+import {connect} from 'react-redux'
+import { Link } from "react-router-dom";
+class ChatRoom extends Component{
     state = {
         text: '',
-        messages: ['hello'],
+        messages: [],
         roomId: '',
         obj: {}
     }
 
     componentDidMount() {
         console.log('state set');
-        socket.on('room joined', async messages => {
-            console.log('room Id coming back:', messages);
+        socket.on('room joined', async data => {
+            console.log('room Id on join:', data);
           await this.setState({
-            obj: messages[0],
-            roomId: messages[0].room_id
+            obj: data[0],
+            roomId: data[0].room_id
           })
-          console.log('state after return:', this.state.obj);
+          socket.emit('get existing messages', data[0].room_id)
+          console.log('state after return:', this.state.roomId);
         })
         socket.on('message sent', data => {
-            console.log('sent message received: ', data.message);
-            let messagesArray = [...this.state.messages]
-            messagesArray.push(data.message)
+            console.log('sent message received: ', data);
+            // let messagesArray = [...this.state.messages]
+            // messagesArray.push(data)
             this.setState({
-                text: data.message,
-                messages: messagesArray
+                // text: data.text,
+                messages: data
             })
         });
-        
+        socket.on('location message sent', data => {
+            console.log('loaction received: ', data);
+            let messagesArray = [...this.state.messages]
+            messagesArray.push(data)
+            this.setState({
+                text: data.text,
+                messages: [messagesArray]
+            })
+        });
     }
 
     // componentWillUnmount() {
     //     socket.emit('disconnect', this.state.roomId)
     // }
 
-    // componentDidUpdate() {
-    //     console.log('updated', data.message);
-    //     socket.on('message sent', data => {
-    //     let messagesArray = [...this.state.messages]
-    //     messagesArray.push(data.message)
-    //     this.setState({
-    //         text: data.message,
-    //         messages: messagesArray
-    //     })
-    //     });
-    // }
-
     sendMessage = (e) => {
         e.preventDefault()
         const inputValue = e.target.elements.chatInput.value
+        const {username, id} = this.props.user.user
+        const {roomId} = this.state
+        console.log('user:', username);
         console.log('value to send:', inputValue);
         // console.log('socket', socket.emit);
         socket.emit('send message', {
-            message: inputValue,
-            roomId: this.state.roomId
+            text: inputValue,
+            from: username,
+            roomId,
+            userId: id,
+            createdAt: new Date().getTime()
         })
-
-            // console.log('timing:');
-            // socket.on('message sent', data => {
-            //     console.log('sent message received: ', data.message);
-            //     let messagesArray = this.state.messages
-            //     messagesArray.push(data.message)
-            //     this.setState({
-            //         text: data.message,
-            //         messages: messagesArray
-            //     })
-            // });
             document.getElementsByClassName('chat-input')[0].value=null
+    }
+
+    findLocation = () => {
+        console.log('roooom:', this.state.roomId);
+        const {roomId} = this.state
+        const {username} = this.props.user.user
+        if(!navigator.geolocation) {
+            return alert('Geoloaction is not supported by your browser...')
+        }
+
+        navigator.geolocation.getCurrentPosition(function (position) 
+        {
+            console.log('position');
+            socket.emit('createLocationMessage', {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+                roomId,
+                username
+            })
+        }, function () {
+            alert('Unable to fetch location...')
+        })
     }
 
     render() {
         console.log('state obj:', this.state.obj);
         console.log('render messages:', this.state.messages);
-        let {messages, text} = this.state
+        console.log('props in Chat:', this.props);
+        // const map = `https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393`
+        let {messages} = this.state
         let msgs = messages.map((message, i) => {
-            console.log('mapping time');
+            console.log('mapping time', message);
             return (
-                <div key={i}>
-                <p style={{color: '#fff'}}>{message}</p>
-                </div>
-            )
-        })
+            <div>
+                { message.username === this.props.user.user.username ? 
+                    <div className="each-user-message">
+                        <img className="message-profile-pic" alt="" src={message.profile_pic} />
+                        <div className="user-chatroom-message" key={i + message.created_at}>
 
-        // console.log('render timing:');
-        //     socket.on('message sent', data => {
-        //         console.log('sent message received: ', data.message);
-        //         let messagesArray = this.state.messages
-        //         messagesArray.push(data.message)
-        //         this.setState({
-        //             text: data.message,
-        //             messages: messagesArray
-        //         })
-        //     });
+                            <div className="sender-info">
+                                <p className="chatroom-from">from: {message.username}</p>
+                                {/* <p className="chatroom-at">at: {message.created_at}</p> */}
+                            </div>
+                            <div className="chatroom-content">
+                                <p className="chatroom-text" style={{color: '#fff'}}>{message.message}</p>
+                                {message.url ? <a className="chatroom-link" rel="noopener noreferrer" target="_blank" href={message.url} >{message.url}</a> : null}
+                            </div>
+
+                        </div>
+                                <p className="chatroom-at">at: {message.created_at}</p>
+                    </div> 
+                    : 
+                    <div className="each-seller-message">
+                        <img className="message-profile-pic" alt="" src={message.profile_pic} />
+                        <div className="chatroom-message" key={i + message.created_at}>
+
+                            <div className="sender-info">
+                                <p className="chatroom-from">from: {message.username}</p>
+                                {/* <p className="chatroom-at">at: {message.created_at}</p> */}
+                            </div>
+                            <div className="chatroom-content">
+                                <p className="chatroom-text" style={{color: '#fff'}}>{message.message}</p>
+                                {message.url ? <a className="chatroom-link" rel="noopener noreferrer" target="_blank" href={message.url} >{message.url}</a> : null}
+                            </div>
+
+                        </div>
+                                <p className="chatroom-at">at: {message.created_at}</p>
+                    </div>}
+            </div>
+            )
+        }) 
 
         return(
             <div className="ChatRoom-container" >
-                <h1>Chat Room</h1>
+            <Link to="/profile"><div className="edible-close"><Close /></div></Link>
+            <img alt="" className="private-chat-background" src={this.state.obj.room_img} />
+            <header>
+                <h2>Chat Room</h2>
+                <button className="chat-location" onClick={this.findLocation}>Send Location</button>
+            </header>
                 <section style={{overflow: 'auto'}}>
-                {messages && messages.length ? (
-                    <div>{msgs}</div>
-                    // let msgs = messages.map((message, i) => {
-                    //     return (
-                    //         <div key={i}>
-                    //         <p style={{color: '#fff'}}>{message}</p>
-                    //         </div>
-                    //     )
-                    // })
-                ): null}
+                    {messages && messages.length ? ( <div>{msgs}</div> ): null}
                 </section>
-                <h1 style={{color: '#369'}}>{messages.length ? <div>{text}</div> : null }</h1>
-                {/* <img alt="" className="private-chat-background" src={this.state.obj.room_img} /> */}
                 <br/>
                 <form onSubmit={e => this.sendMessage(e)} className="chat-form">
                     
                     <input type="text" name="chatInput" className="chat-input" placeholder="Compose Message..." />
-                    <button className="chat-submit" >Submit</button>
+                    <button className="chat-submit" >Send Message</button>
                 </form>
             </div>
         )
     }
 }
+
+const mapStateToProps = (reduxState) => {
+    return reduxState
+}
+
+export default connect(mapStateToProps)(ChatRoom)

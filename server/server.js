@@ -6,6 +6,7 @@ const authCtrl = require('./controllers/authController')
 const rcpCtrl = require('./controllers/recipeController')
 const slrCtrl = require('./controllers/sellerController')
 const socket = require('socket.io')
+const ssl = require('./controllers/socketController')
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
 
 const app = express()
@@ -30,55 +31,9 @@ massive(CONNECTION_STRING).then(db => {
 
     // SOCKETS
     io.on('connection', socket => {
-        console.log('a user connected');
+        console.log('A new user just connected');
         // -------------------------------------
-        // JOIN ROOM
-        socket.on('join room', async data => {
-            const db = app.get('db')
-            const {roomId, userId, creatorId, roomImg} = data
-            let confirmedRoom = await db.find_room(roomId)
-            console.log('hit serverside:', confirmedRoom);
-            if (!confirmedRoom.length) {
-                let messages = await db.create_room(roomId, +userId, +creatorId, roomImg)
-                socket.join(roomId)
-                io.in(roomId).emit('room joined', messages)
-            console.log('sending messages:', messages);
-            } else {
-                socket.join(confirmedRoom[0].room_id)
-                io.in(confirmedRoom[0].room_id).emit('room joined', confirmedRoom)
-            }
-            // check to see if room exists---sql call
-            // if it exists then join room and send back messages history & roomId
-            // if !exists then create room
-                // join room
-
-        })
-        // .in(data.roomId)
-        socket.on('send message', data => {
-        console.log('console-message is: ', data);
-        const {roomId} = data
-        console.log('data room:', roomId);
-        io.to(roomId).emit('message sent', data)
-        // send to data base and get all messages
-            
-        // socket.emit('message sent', <send back all messages>);
-        // console.log('timing server');
-        });
-        // NEW USER
-        socket.on('user signed on', () => {
-            console.log('hello new user');
-        })
-    
-        // DISCONNECTED
-        socket.on('disconnect', roomId => {
-            console.log('user disconnected');
-            socket.leave(roomId)
-        });
-
-        socket.on('leave all', () => {
-            socket.leaveAll()
-        })
-    
+        ssl.setSocketListeners(socket, db, io)
     })
 })
 
@@ -86,7 +41,7 @@ massive(CONNECTION_STRING).then(db => {
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.delete('/auth/logout', authCtrl.logout)
-app.get('/api/checkSession', authCtrl.checkSesh)
+app.get('/api/checkSession', authCtrl.checkSesh) 
 
 // PIN ENDPOINTS
 app.post('/api/createboard', rcpCtrl.createBoard)

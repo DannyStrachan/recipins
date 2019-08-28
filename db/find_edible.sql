@@ -11,7 +11,7 @@
         created_seller_edibles.user_id,
         recipins_users.profile_pic,
         recipins_users.username
-        FROM
+    FROM
         created_seller_edibles
-        INNER JOIN recipins_users on recipins_users.id = created_seller_edibles.user_id
-        WHERE created_seller_edibles.id = $1;
+    INNER JOIN recipins_users on recipins_users.id = created_seller_edibles.user_id
+    WHERE created_seller_edibles.id = $1;

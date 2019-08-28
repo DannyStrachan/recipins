@@ -65,3 +65,13 @@ CREATE TABLE edible_rooms (
     room_img TEXT
 );
 SELECT * FROM edible_rooms;
+
+DROP TABLE IF EXISTS edible_messages;
+CREATE TABLE edible_messages (
+    id SERIAL PRIMARY KEY,
+    room_id VARCHAR(44),
+    user_id INT,
+    message TEXT,
+    created_at VARCHAR(20)
+);
+SELECT * FROM edible_messages;
