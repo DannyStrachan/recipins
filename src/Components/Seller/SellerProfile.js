@@ -61,7 +61,7 @@ class SellerProfile extends Component{
                         <div className="seller-profile-left" >
                             <h1 className="seller-profile-name" >{this.props.user.user.username}</h1>
                             <div className="seller-profile-options" >
-                                <div className="add-recipe-link" onClick={this.showCreateBoard} ><AddCircle color='rgb(203, 9, 9)' size='large' /></div>
+                                <Link to="/wizard/step1" ><div className="add-recipe-link" ><AddCircle color='rgb(203, 9, 9)' size='large' /></div></Link>
                                 <div className="messages-link" ><ChatOption color='rgb(27, 180, 233)' size='large' /></div>
                                 <Link to="/profile" ><div className="seller-profile-link" ><Pin color='rgb(44, 420, 44)' size='large' /></div></Link>
                             </div>

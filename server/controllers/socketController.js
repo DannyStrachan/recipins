@@ -1,4 +1,4 @@
-const {generateMessage, generateLocationMessage} = require('../utils/message')
+const {generateLocationMessage} = require('../utils/message')
 
 module.exports = {
     setSocketListeners: function ( socket, db, io ) {
@@ -10,7 +10,7 @@ module.exports = {
             if (!confirmedRoom.length) {
                 let messages = await db.create_room(roomId, +userId, +creatorId, roomImg)
                 socket.join(roomId)
-                io.in(roomId).emit('room joinedz', messages)
+                io.in(roomId).emit('room joined', messages)
             } else {
                 socket.join(confirmedRoom[0].room_id)
                 io.in(confirmedRoom[0].room_id).emit('room joined', confirmedRoom)

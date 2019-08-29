@@ -20,12 +20,13 @@ class ChatConvos extends Component{
         })
     }
 
-    goToRoom = (e) => {
+    goToRoom = async (e) => {
         e.preventDefault()
-        console.log('going to room', e.target.name);
-        socket.emit('join room', {roomId: e.target.name})
-        window.location.href = `http://localhost:3000/#/chatroom/${e.target.name}`
-        // this.props.history.push('/chatroom/:')
+        let roomId = e.target.name
+        console.log('going to room', roomId);
+        await socket.emit('join room', {roomId})
+        window.location.href = `http://localhost:3000/#/chatroom/${roomId}`
+        // this.props.history.push(`/chatroom/${e.target.name}`)
     }
 
     render(){
@@ -33,7 +34,7 @@ class ChatConvos extends Component{
         console.log('state:', this.state.foundRooms);
         let rooms = this.state.foundRooms.map((room, i) => {
             return (
-            <div className="Room-container" value={room.room_id} onClick={e => this.goToRoom(e)} key={i}>
+            <div className="Room-container" onClick={e => this.goToRoom(e)} key={i}>
                 <img className="room-image" name={room.room_id} alt="" src={room.room_img} />
             </div>
             )

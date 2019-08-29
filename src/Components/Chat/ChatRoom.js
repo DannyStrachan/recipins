@@ -14,12 +14,12 @@ class ChatRoom extends Component{
     }
 
     componentDidMount() {
-        console.log('state set');
-        socket.on('room joined', async data => {
+        console.log('state set', this.props.match.params.roomId);
+        socket.on('room joined', data => {
             console.log('room Id on join:', data);
-          await this.setState({
+          this.setState({
             obj: data[0],
-            roomId: data[0].room_id
+            roomId: this.props.match.params.roomId
           })
           socket.emit('get existing messages', data[0].room_id)
           console.log('state after return:', this.state);
@@ -28,6 +28,7 @@ class ChatRoom extends Component{
             console.log('sent message received: ', data);
             // let messagesArray = [...this.state.messages]
             // messagesArray.push(data)
+            if (!data) {console.log('problem')}
             this.setState({
                 // text: data.text,
                 messages: data

@@ -52,7 +52,7 @@ class Edible extends Component {
     this.startChat()
   }
 
-  startChat = () => {
+  startChat = async () => {
     let {combinedIds: roomId} = this.state
     console.log('starting chat:', this.state.combinedIds);
     const {id: userId} = this.props.user.user
@@ -60,8 +60,9 @@ class Edible extends Component {
     const {image_url: roomImg} = this.props.edibles.currentEdible[0]
     const data = {roomId, userId, creatorId, roomImg}
     console.log('starting chat data:', data);
-    socket.emit('join room', data)
-    this.props.history.push('/chatroom')
+    await socket.emit('join room', data)
+    // this.props.history.push('/chatroom/')
+    window.location.href = `http://localhost:3000/#/chatroom/${roomId}`
   }
 
   render() {
