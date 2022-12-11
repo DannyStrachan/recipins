@@ -8,7 +8,7 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
     "eslint": "^6.2.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.16.2",
     "grommet-icons": "^4.3.0",
     "massive": "^5.11.2",
